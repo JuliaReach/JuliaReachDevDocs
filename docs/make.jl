@@ -5,15 +5,8 @@ makedocs(;
     format = :html,
     pages = [
         "Home" => "index.md",
-        "Adding a new JuliaReach package" => "newpkg.md",
-        "Documentation Guidelines" => Any[
-            "Generating the docs" => "guidelines/generating.md",
-            "Mathematical notation" => "guidelines/math.md",
-            "Writing docstrings" => "guidelines/docstrings.md",
-            "Additional guidelines" => "guidelines/extras.md",
-            "Writing doctests" => "guidelines/doctests.md",
-            "Cross references" => "guidelines/crossrefs.md"
-            ],
+        "Adding a New Package" => "newpkg.md",
+        "Writing Documentation" => "guidelines.md",
         "About" => "about.md"
     ],
     repo="https://github.com/JuliaReach/JuliaReachDevDocs.jl/blob/{commit}{path}#L{line}",

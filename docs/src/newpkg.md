@@ -1,3 +1,8 @@
+```@contents
+Pages = ["newpkg.md"]
+Depth = 3
+```
+
 ## Creating the github repository
 
 To create an empty repository, go to your user name and click on `New`. If you have write access to the [JuliaReach](http://juliareach.org) org, click on `New` on the top-right or go to the link [Create a new repository](https://github.com/organizations/JuliaReach/repositories/new).

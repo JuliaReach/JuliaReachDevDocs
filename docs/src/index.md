@@ -4,15 +4,15 @@
 DocTestFilters = [r"[0-9\.]+ seconds \(.*\)"]
 ```
 
-`JuliaReachDevDocs` is a [Julia](http://julialang.org) for the JuliaReach org
-developer's guidelines.
+`JuliaReachDevDocs` is a repository with the JuliaReach org developer's guidelines.
 
 ## Contents
 
 ```@contents
 Pages = [
     "index.md",
-    "newpkg.md"
+    "newpkg.md",
+    "guidelines.md"
 ]
 Depth = 2
 ```
