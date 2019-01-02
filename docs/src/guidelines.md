@@ -241,7 +241,7 @@ end
 
 - The doctests currently take a long time (~1min) because they generate some plots using `Plots.jl`. There is a line `doctest = true` in `make.jl` which you can set to `false` to allow building the documentation but skipping the doctests.
 
-## Adding entries to the online documentation
+## Extending the online documentation
 
 To add a function or a type in the online documentation, put the function's signature or type in a `@docs` block on the appropriate markdown (`.md`) file of the `/docs/src` folder.
 
