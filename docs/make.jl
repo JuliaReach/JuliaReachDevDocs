@@ -1,4 +1,4 @@
-using Documenter
+using Documenter, JuliaReachDevDocs
 
 makedocs(;
     doctest = false,
@@ -9,16 +9,15 @@ makedocs(;
         "Writing Documentation" => "guidelines.md",
         "About" => "about.md"
     ],
-    repo="https://github.com/JuliaReach/JuliaReachDevDocs.jl/blob/{commit}{path}#L{line}",
-    sitename="JuliaReachDevDocs.jl",
+    repo="https://github.com/JuliaReach/JuliaReachDevDocs/blob/{commit}{path}#L{line}",
+    sitename="JuliaReachDevDocs",
     authors="Marcelo Forets, Christian Schilling",
     assets = ["assets/juliareach.css"],
 )
 
 deploydocs(;
-    repo="github.com/JuliaReach/JuliaReachDevDocs.jl",
+    repo="github.com/JuliaReach/JuliaReachDevDocs",
     target="build",
     deps=nothing,
-    make=nothing,
-    julia="1.0"
+    make=nothing
 )
