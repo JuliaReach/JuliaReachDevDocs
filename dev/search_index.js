@@ -1,0 +1,203 @@
+var documenterSearchIndex = {"docs": [
+
+{
+    "location": "#",
+    "page": "Home",
+    "title": "Home",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "#JuliaReachDevDocs-1",
+    "page": "Home",
+    "title": "JuliaReachDevDocs",
+    "category": "section",
+    "text": "DocTestFilters = [r\"[0-9\\.]+ seconds \\(.*\\)\"]JuliaReachDevDocs hosts resources for JuliaReach org developers."
+},
+
+{
+    "location": "#Contents-1",
+    "page": "Home",
+    "title": "Contents",
+    "category": "section",
+    "text": "Pages = [\n    \"index.md\",\n    \"newpkg.md\",\n    \"guidelines.md\"\n]\nDepth = 2"
+},
+
+{
+    "location": "newpkg/#",
+    "page": "Adding a New Package",
+    "title": "Adding a New Package",
+    "category": "page",
+    "text": "Pages = [\"newpkg.md\"]\nDepth = 3"
+},
+
+{
+    "location": "newpkg/#Creating-the-github-repository-1",
+    "page": "Adding a New Package",
+    "title": "Creating the github repository",
+    "category": "section",
+    "text": "To create an empty repository, go to your user name and click on New. If you have write access to the JuliaReach org, click on New on the top-right or go to the link Create a new repository."
+},
+
+{
+    "location": "newpkg/#Creating-the-Julia-package-1",
+    "page": "Adding a New Package",
+    "title": "Creating the Julia package",
+    "category": "section",
+    "text": "An easy way to create an empty package is to use PkgTemplates. An example is given below:julia> using PkgTemplates\n\njulia> t = Template(; user=\"JuliaReach\", license=\"MIT\",\n                      authors=[\"Marcelo Forets\", \"Benoît Legat\", \"Christian Schilling\"],\n                      plugins=[TravisCI(), Codecov(), AppVeyor(), GitHubPages()])\n\njulia> generate(\"MathematicalSets\", t)Some settings are used in JuliaReach\'s projects: update the README\nadd the style for docs in docs/assets/juliareach.css"
+},
+
+{
+    "location": "newpkg/#Integrating-the-repository-with-gitter-1",
+    "page": "Adding a New Package",
+    "title": "Integrating the repository with gitter",
+    "category": "section",
+    "text": "Github uses Webhooks to set up GitHub Apps which subscribe to certain events on github repositories. To make your newly created package under https://github.com/JuliaReach to be integrated with the main gitter channel https://gitter.im/JuliaReach/Lobby, do the following steps:In gitter, go to \"Room settings\", then click on \"Integrations\".\nSelect \"Add an integration (Github)\".\nYou may be asked to grant write access.\nIn the tab \"Pick which repositories you want to subscribe to.\", select the new created project. Note. If the project is hosted under the org, gitter should have been granted write access to it; see this FAQ for details."
+},
+
+{
+    "location": "newpkg/#Adding-requirements-1",
+    "page": "Adding a New Package",
+    "title": "Adding requirements",
+    "category": "section",
+    "text": "These are links we have found useful:https://julialang.github.io/Pkg.jl/dev/creating-packages/#Test-specific-dependencies-1\nhttps://discourse.julialang.org/t/pkg-api-for-getting-uuid-of-another-package/15061/2"
+},
+
+{
+    "location": "guidelines/#",
+    "page": "Writing Documentation",
+    "title": "Writing Documentation",
+    "category": "page",
+    "text": "Pages = [\"guidelines.md\"]\nDepth = 3"
+},
+
+{
+    "location": "guidelines/#Generating-the-documentation-1",
+    "page": "Writing Documentation",
+    "title": "Generating the documentation",
+    "category": "section",
+    "text": "To generate the HTML documentation we rely on the docs/make.jl script that is interpreted using Julia\'s documentation generator package Documenter.jl. You can build the documentation locally and verify the changes with the following command:$ julia --color=yes docs/make.jlThis will deploy the docs in docs/build with index.html being the start page.Observe that the docs/build folder is and should not be included in the master branch: in fact, the build system automatically pushes this folder to the gh-pages branch after each commit. This means that each time that a commit is merged into the master branch in Github, the updated documentation will be available as soon as the continuous integration finishes (this usually takes a couple of minutes)."
+},
+
+{
+    "location": "guidelines/#Mathematical-notation-1",
+    "page": "Writing Documentation",
+    "title": "Mathematical notation",
+    "category": "section",
+    "text": "Mathematical formulas are written in LaTeX inside double backticks. If possible you should use Unicode; otherwise remember that the backslash character should be written twice.``\\delta[TAB]A``Notice that the string is inside double back-ticks, and that we use the TAB key to transform into Unicode. In those cases where there is no Unicode character, you can use two backslash characters.``\\\\mathcal{X}_0``Finally, Documenter can also parse usual LaTeX dollar sign notation for the Markdown files. In that case, only one backslash is needed. For more examples consult Documenter.jl or check the various examples in our project\'s source code."
+},
+
+{
+    "location": "guidelines/#Writing-docstrings-1",
+    "page": "Writing Documentation",
+    "title": "Writing docstrings",
+    "category": "section",
+    "text": "In this section we give the guidelines for writing docstrings of functions and types. We give two concrete examples. You can find more examples by searching in the source files."
+},
+
+{
+    "location": "guidelines/#Documenting-functions-1",
+    "page": "Writing Documentation",
+    "title": "Documenting functions",
+    "category": "section",
+    "text": "The docstring of a function should consist of following parts, in the given order:Part Category Description\nSignature Mandatory List the function\'s name and arguments (include the argument types and the return type, i.e., just copy the signature from the source code; mark optional arguments in brackets)\nBrief description Mandatory One-line purpose of the function\nInput Mandatory All input arguments, optional or not, and valid keyword arguments\nOutput Mandatory The return value(s) of the function together with a description; \"Nothing.\" if no value is returned.\nNotes Optional Additional details about the function\nAlgorithm Optional but recommended Details on the implementation and the relation to other functions\nExamples Optional but recommended Give concrete, self-contained applications of this functionBelow we provide a concrete example:\"\"\"\n    monotone_chain!(points::Vector{S}; sort::Bool=true\n                   )::Vector{S} where {S<:AbstractVector{N}} where {N<:Real}\n\nCompute the convex hull of points in the plane using Andrew\'s monotone chain\nmethod.\n\n### Input\n\n- `points` -- list of 2D vectors; is sorted in-place inside this function\n- `sort`   -- (optional, default: `true`) flag for sorting the vertices\n              lexicographically; sortedness is required for correctness\n\n### Output\n\nList of vectors containing the 2D coordinates of the corner points of the\nconvex hull.\n\n### Notes\n\nFor large sets of points, it is convenient to use static vectors to get\nmaximum performance. For information on how to convert usual vectors\ninto static vectors, see the type `SVector` provided by the\n[StaticArrays](http://juliaarrays.github.io/StaticArrays.jl/stable/)\npackage.\n\n### Algorithm\n\nThis function implements Andrew\'s monotone chain convex hull algorithm to\nconstruct the convex hull of a set of ``n`` points in the plane in\n``O(n \\\\log n)`` time.\nFor further details see\n[Monotone chain](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain)\n\"\"\"\nfunction monotone_chain!(points::Vector{S}; sort::Bool=true\n                        )::Vector{S} where {S<:AbstractVector{N}} where {N<:Real}\n    ...\nendThe following example has an optional argument, and it is surrounded with square brackets in the docstring by convention.\"\"\"\n    radius(H::Hyperrectangle, [p]::Real=Inf)::Real\n\nReturn the radius of a hyperrectangle.\n\n### Input\n\n- `H` -- hyperrectangle\n- `p` -- (optional, default: `Inf`) norm\n\n### Output\n\nA real number representing the radius.\n\n### Notes\n\nThe radius is defined as the radius of the enclosing ball of the given\n``p``-norm of minimal volume with the same center.\n\"\"\"\nfunction radius(H::Hyperrectangle, p::Real=Inf)::Real\n    ...\nend"
+},
+
+{
+    "location": "guidelines/#Documenting-types-1",
+    "page": "Writing Documentation",
+    "title": "Documenting types",
+    "category": "section",
+    "text": "The docstring of a type should consist of the following parts:Part Category Description\nSignature Mandatory Describe the interface of this type (just copy the signature from the source code)\nBrief description Mandatory One-line purpose of the type\nFields Mandatory Describe each field\nNotes Optional Additional details about the type\nExamples Optional but recommended Construction example (recommended if it has different constructors)Below we provide a concrete example:\n\"\"\"\n    DiscreteSystem <: AbstractSystem\n\nType that represents a system of discrete-time affine ODEs with nondeterministic\ninputs,\n\n``x_{k+1} = A x_{k} + u_{k}``\n\nwhere:\n\n- ``A`` is a square matrix\n- ``x(0) ∈ \\\\mathcal{X}_0`` and ``\\\\mathcal{X}_0`` is a convex set\n- ``u_{k} ∈ \\\\mathcal{U}_{k}``, where ``\\\\{\\\\mathcal{U}_{k}\\\\}_k`` is a\n  set-valued sequence defined over ``[0, δ], ..., [(N-1)δ, N δ]`` for some\n  ``δ>0``\n\n### Fields\n\n- `A`  -- square matrix, possibly of type `SparseMatrixExp`\n- `X0` -- set of initial states\n- `U`  -- nondeterministic inputs\n- `δ`  -- discretization step\n\n### Examples\n\n- `DiscreteSystem(A::Union{AbstractMatrix{Float64}, SparseMatrixExp{Float64}},\n                  X0::LazySet,\n                  δ::Float64,\n                  U::NonDeterministicInput)` -- default constructor\n- `DiscreteSystem(A::Union{AbstractMatrix{Float64}, SparseMatrixExp{Float64}},\n                  X0::LazySet,\n                  δ::Float64)` -- constructor with no inputs\n- `DiscreteSystem(A::Union{AbstractMatrix{Float64}, SparseMatrixExp{Float64}},\n                  X0::LazySet,\n                  δ::Float64,\n                  U::LazySet)` -- constructor that creates a\n  `ConstantNonDeterministicInput`\n- `DiscreteSystem(A::Union{AbstractMatrix{Float64}, SparseMatrixExp{Float64}},\n                  X0::LazySet,\n                  δ::Float64,\n                  U::Vector{<:LazySet})` -- constructor that creates a\n  `TimeVaryingNonDeterministicInput`\n\"\"\"\nstruct DiscreteSystem <: AbstractSystem\n    ...\nendThe following is an example of an abstract type, parametric in N, which defines an interface and includes a doctest.\"\"\"\n    AbstractHPolygon{N<:Real} <: AbstractPolygon{N}\n\nAbstract type for polygons in H-representation (i.e., constraints).\n\n### Notes\n\nEvery concrete `AbstractHPolygon` must have the following fields:\n- `constraints_list::Vector{LinearConstraint{N}}` -- the constraints\n\n```jldoctest\njulia> subtypes(AbstractHPolygon)\n2-element Array{Union{DataType, UnionAll},1}:\n LazySets.HPolygon   \n LazySets.HPolygonOpt\n```\n\"\"\"\nabstract type AbstractHPolygon{N<:Real} <: AbstractPolygon{N} end"
+},
+
+{
+    "location": "guidelines/#More-guidelines-1",
+    "page": "Writing Documentation",
+    "title": "More guidelines",
+    "category": "section",
+    "text": "When writing error messages, it is preferred to make the first word lowercase.\nWe try to stay within 80 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with *, as in:    @assert dim(P) == size(M, 2) \"a linear map of size $(size(M)) cannot be \" *\n                                 \"applied to a set of dimension $(dim(P))\"By convention we use the full function f() ... end instead of f() = one-liners. However the short form is preferable in constructors and aliases such as ×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y).\nTo indicate helper functions that are not part of the API, you can use a leading underscore for the function name, as in _myfun."
+},
+
+{
+    "location": "guidelines/#Writing-doctests-1",
+    "page": "Writing Documentation",
+    "title": "Writing doctests",
+    "category": "section",
+    "text": "Using Documenter.jl, docstring examples can be incorporated to the doctesting framework using the jldoctest environment, see the Doctests section of the documentation.Here are some additional tips:To have the required modules available in the current file, write the following in triple backticks (e.g., see docs/src/lib/representations.md or the documentation):@meta\nDocTestSetup = quote\n    using LazySets\nendTo preserve definitions between blocks of code you can use labels. For example, use the environment jldoctest ball2_label.\nIf you use several lines in REPL mode (julia> ...), you will have to include empty lines between the commands. Otherwise the variables from the previous commands are not available below.\nThe doctests currently take a long time (~1min) because they generate some plots using Plots.jl. There is a line doctest = true in make.jl which you can set to false to allow building the documentation but skipping the doctests."
+},
+
+{
+    "location": "guidelines/#Extending-the-online-documentation-1",
+    "page": "Writing Documentation",
+    "title": "Extending the online documentation",
+    "category": "section",
+    "text": "To add a function or a type in the online documentation, put the function\'s signature or type in a @docs block on the appropriate markdown (.md) file of the /docs/src folder.For example, let the functionfunction dim(P::AbstractPolygon)::Int\n   ...\nendIt is added in the documentation of the AbstractPolygon interface, /docs/src/lib/interfaces.md, in the following way:@docs\n...\ndim(P::AbstractPolygon)Note that output type annotations is not needed. Also the variable\'s name is not needed and one could equally have written dim(::AbstractPolygon).In some cases, the function to be added contains an optional input. In those cases only the required arguments are needed. For instance, let:    linear_map(M::AbstractMatrix, P::AbstractPolygon{N};\n               output_type::Type{<:LazySet}=typeof(P)) where {N}This function can be documented in a @docs block as:linear_map(::AbstractMatrix, P::AbstractPolygon{N}) where NIn cases when there is no function overload, it is sufficient to write the function\'s name. For example, the function with signaturefunction convex_hull!(points::Vector{S};\n                      algorithm::String=\"monotone_chain\"\n                     )::Vector{S} where {N<:Real, S<:AbstractVector{N}}\n...\nendIs documented in /docs/src/lib/operations.md as:@docs\n...\nconvex_hull!"
+},
+
+{
+    "location": "about/#",
+    "page": "About",
+    "title": "About",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "about/#About-1",
+    "page": "About",
+    "title": "About",
+    "category": "section",
+    "text": "This page contains some general information about this project, and recommendations about contributing.Pages = [\"about.md\"]"
+},
+
+{
+    "location": "about/#Contributing-1",
+    "page": "About",
+    "title": "Contributing",
+    "category": "section",
+    "text": "If you like this package, consider contributing! You can send bug reports (or fix them and send your code), add examples to the documentation, or propose new features.Below some conventions that we follow when contributing to this package are detailed. For specific guidelines on documentation, see the Documentations Guidelines wiki."
+},
+
+{
+    "location": "about/#Branches-and-pull-requests-(PR)-1",
+    "page": "About",
+    "title": "Branches and pull requests (PR)",
+    "category": "section",
+    "text": "We use a standard pull request policy: You work in a private branch and eventually add a pull request, which is then reviewed by other programmers and merged into the master branch.Each pull request should be pushed in a new branch with the name of the author followed by a descriptive name, e.g., mforets/my_feature. If the branch is associated to a previous discussion in one issue, we use the name of the issue for easier lookup, e.g., mforets/7."
+},
+
+{
+    "location": "about/#Unit-testing-and-continuous-integration-(CI)-1",
+    "page": "About",
+    "title": "Unit testing and continuous integration (CI)",
+    "category": "section",
+    "text": "This project is synchronized with Travis CI such that each PR gets tested before merging (and the build is automatically triggered after each new commit). For the maintainability of this project, it is important to understand and fix the failing doctests if they exist. We develop in Julia v0.6.0, but for experimentation we also build on the nightly branch.When you modify code in this package, you should make sure that all unit tests pass. To run the unit tests locally, you should do:$ julia --color=yes test/runtests.jlAlternatively, you can achieve the same from inside the REPL using the following command:julia> using Pkg\njulia> Pkg.test(\"MathematicalSets\")We also advise adding new unit tests when adding new features to ensure long-term support of your contributions."
+},
+
+{
+    "location": "about/#Contributing-to-the-documentation-1",
+    "page": "About",
+    "title": "Contributing to the documentation",
+    "category": "section",
+    "text": "New functions and types should be documented according to our guidelines directly in the source code.You can view the source code documentation from inside the REPL by typing ? followed by the name of the type or function. For example, the following command will print the documentation of the AbstractSet type:julia> ?AbstractSetThis documentation you are currently reading is written in Markdown, and it relies on Documenter.jl to produce the HTML layout. The sources for creating this documentation are found in docs/src. You can easily include the documentation that you wrote for your functions or types there (see the Documenter.jl guide or our sources for examples).To generate the documentation locally, run make.jl, e.g., by executing the following command in the terminal:$ julia --color=yes docs/make.jlNote that this also runs all doctests which will take some time."
+},
+
+{
+    "location": "about/#Related-projects-1",
+    "page": "About",
+    "title": "Related projects",
+    "category": "section",
+    "text": "See also MathematicalSystems related projects."
+},
+
+{
+    "location": "about/#Credits-1",
+    "page": "About",
+    "title": "Credits",
+    "category": "section",
+    "text": "These persons have contributed to MathematicalSets.jl (in alphabetic order):Marcelo Forets\nBenoît Legat\nChristian Schilling"
+},
+
+]}
