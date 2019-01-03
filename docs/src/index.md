@@ -4,7 +4,7 @@
 DocTestFilters = [r"[0-9\.]+ seconds \(.*\)"]
 ```
 
-`JuliaReachDevDocs` hosts the JuliaReach org developer's guidelines.
+`JuliaReachDevDocs` hosts resources for JuliaReach org developers.
 
 ## Contents
 
