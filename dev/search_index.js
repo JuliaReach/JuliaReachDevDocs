@@ -33,6 +33,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "newpkg/#Adding-a-New-Package-1",
+    "page": "Adding a New Package",
+    "title": "Adding a New Package",
+    "category": "section",
+    "text": ""
+},
+
+{
     "location": "newpkg/#Creating-the-github-repository-1",
     "page": "Adding a New Package",
     "title": "Creating the github repository",
@@ -73,9 +81,17 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "guidelines/#Code-guidelines-1",
+    "location": "guidelines/#Coding-Guidelines-1",
     "page": "Coding Guidelines",
-    "title": "Code guidelines",
+    "title": "Coding Guidelines",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "guidelines/#Source-code-guidelines-1",
+    "page": "Coding Guidelines",
+    "title": "Source-code guidelines",
     "category": "section",
     "text": "In error messages, make the first word lowercase and do not add a period in the end.\nTry to stay within 80 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with *, as in:    @assert dim(P) == size(M, 2) \"a linear map of size $(size(M)) cannot be \" *\n                                 \"applied to a set of dimension $(dim(P))\"Use the full function f() ... end instead of f() = .... However, the short form is preferable in constructors and aliases such as ×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y).\nUse the following conventions for type parameters:\nN for numeric types\nVN for vectors of numeric type N\nMN for matrices of numeric type N\nS for set types\nTo indicate helper functions that are not part of the API, use a leading underscore for the function name, as in _myfun."
 },
