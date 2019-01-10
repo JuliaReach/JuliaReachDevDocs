@@ -3,7 +3,9 @@ Pages = ["guidelines.md"]
 Depth = 3
 ```
 
-# Code guidelines
+# Coding Guidelines
+
+# Source-code guidelines
 
 - In error messages, make the first word lowercase and do not add a period in the end.
 
@@ -24,9 +26,9 @@ Depth = 3
 
 - To indicate helper functions that are not part of the API, use a leading underscore for the function name, as in `_myfun`.
 
-# Documentation guidelines
+## Documentation guidelines
 
-## Generating the documentation
+### Generating the documentation
 
 To generate the HTML documentation we rely on the `docs/make.jl` script that is interpreted using Julia's documentation generator package [Documenter.jl](https://juliadocs.github.io/Documenter.jl/stable/). You can build the documentation locally and verify the changes with the following command:
 
@@ -37,7 +39,7 @@ This will deploy the docs in `docs/build` with `index.html` being the start page
 
 Observe that the `docs/build` folder is and should not be included in the `master` branch: in fact, the build system automatically pushes this folder to the `gh-pages` branch after each commit. This means that each time that a commit is merged into the `master` branch in Github, the updated documentation will be available as soon as the continuous integration finishes (this usually takes a couple of minutes).
 
-## Mathematical notation
+### Mathematical notation
 
 Mathematical formulas are written in LaTeX inside double backticks. If possible you should use Unicode; otherwise remember that the backslash character should be written twice.
 
@@ -53,11 +55,11 @@ Notice that the string is inside double back-ticks, and that we use the TAB key 
 
 Finally, Documenter can also parse usual LaTeX dollar sign notation for the Markdown files. In that case, only one backslash is needed. For more examples consult [Documenter.jl](https://juliadocs.github.io/Documenter.jl/stable/) or check the various examples in our project's source code.
 
-## Writing docstrings
+### Writing docstrings
 
 In this section we give the guidelines for writing docstrings of functions and types. We give two concrete examples. You can find more examples by searching in the source files.
 
-### Documenting functions
+#### Documenting functions
 
 The docstring of a function should consist of following parts, in the given order:
 
@@ -141,7 +143,7 @@ function radius(H::Hyperrectangle, p::Real=Inf)::Real
 end
 ```
 
-### Documenting types
+#### Documenting types
 
 The docstring of a type should consist of the following parts:
 
@@ -228,7 +230,7 @@ julia> subtypes(AbstractHPolygon)
 abstract type AbstractHPolygon{N<:Real} <: AbstractPolygon{N} end
 ````
 
-## Writing doctests
+### Writing doctests
 
 Using [Documenter.jl](https://juliadocs.github.io/Documenter.jl/stable/), docstring examples can be incorporated to the doctesting framework using the `jldoctest` environment, see the [Doctests](https://juliadocs.github.io/Documenter.jl/stable/man/doctests/#Doctests-1) section of the documentation.
 
@@ -249,7 +251,7 @@ end
 
 - The doctests currently take a long time (~1min) because they generate some plots using `Plots.jl`. There is a line `doctest = true` in `make.jl` which you can set to `false` to allow building the documentation but skipping the doctests.
 
-## Extending the online documentation
+### Extending the online documentation
 
 To add a function or a type in the online documentation, put the function's signature or type in a `@docs` block on the appropriate markdown (`.md`) file of the `/docs/src` folder.
 
