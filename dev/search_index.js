@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Contents",
     "category": "section",
-    "text": "Pages = [\n    \"index.md\",\n    \"newpkg.md\",\n    \"guidelines.md\"\n]\nDepth = 2"
+    "text": "Pages = [\n    \"index.md\",\n    \"newpkg.md\",\n    \"guidelines.md\"\n]\nDepth = 3"
 },
 
 {
