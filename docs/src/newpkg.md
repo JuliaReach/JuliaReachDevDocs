@@ -32,17 +32,22 @@ Some settings are used in JuliaReach's projects:
 
 Github uses [Webhooks](https://developer.github.com/webhooks/) to set up GitHub Apps which subscribe to certain events on github repositories. To make your newly created package under `https://github.com/JuliaReach` to be integrated with the main gitter channel `https://gitter.im/JuliaReach/Lobby`, do the following steps:
 
-1. In gitter, go to "Room settings", then click on "Integrations".
+1. In gitter, go to *Room settings*, then click on *Integrations*.
 
-2. Select "Add an integration (Github)".
+2. Select *Add an integration (Github)*.
 
 3. You may be asked to grant write access.
 
-4. In the tab "Pick which repositories you want to subscribe to.", select the new created project. *Note.* If the project is hosted under the org, gitter should have been granted write access to it; see [this FAQ](https://gitlab.com/gitlab-org/gitter/webapp/blob/develop/docs/faq.md#what-happens-if-i-rename-something-on-github-org-repo) for details.
+4. In the tab *Pick which repositories you want to subscribe to:*, select the new created project.
+
+
+!!! note
+
+    If the project is hosted under the org, gitter should have been granted write access to it; see [this     FAQ](https://gitlab.com/gitlab-org/gitter/webapp/blob/develop/docs/faq.md#what-happens-if-i-rename-something-on-github-org-repo) for details.
 
 ## Adding requirements
 
 These are links we have found useful:
 
-- https://julialang.github.io/Pkg.jl/dev/creating-packages/#Test-specific-dependencies-1
-- https://discourse.julialang.org/t/pkg-api-for-getting-uuid-of-another-package/15061/2
+- [Testing specific dependencies](https://julialang.github.io/Pkg.jl/dev/creating-packages/#Test-specific-dependencies-1)
+- [Getting a valid uuid](https://discourse.julialang.org/t/pkg-api-for-getting-uuid-of-another-package/15061/2)
