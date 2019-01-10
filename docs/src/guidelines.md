@@ -3,6 +3,29 @@ Pages = ["guidelines.md"]
 Depth = 3
 ```
 
+# Code guidelines
+
+- In error messages, make the first word lowercase and do not add a period in the end.
+
+- Try to stay within 80 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with `*`, as in:
+
+```julia
+    @assert dim(P) == size(M, 2) "a linear map of size $(size(M)) cannot be " *
+                                 "applied to a set of dimension $(dim(P))"
+```
+
+- Use the full `function f() ... end` instead of `f() = ...`. However, the short form is preferable in constructors and aliases such as `×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y)`.
+
+- Use the following conventions for type parameters:
+  * `N` for numeric types
+  * `VN` for vectors of numeric type `N`
+  * `MN` for matrices of numeric type `N`
+  * `S` for set types
+
+- To indicate helper functions that are not part of the API, use a leading underscore for the function name, as in `_myfun`.
+
+# Documentation guidelines
+
 ## Generating the documentation
 
 To generate the HTML documentation we rely on the `docs/make.jl` script that is interpreted using Julia's documentation generator package [Documenter.jl](https://juliadocs.github.io/Documenter.jl/stable/). You can build the documentation locally and verify the changes with the following command:
@@ -52,8 +75,8 @@ Below we provide a concrete example:
 
 ```julia
 """
-    monotone_chain!(points::Vector{S}; sort::Bool=true
-                   )::Vector{S} where {S<:AbstractVector{N}} where {N<:Real}
+    monotone_chain!(points::Vector{VN}; sort::Bool=true
+                   )::Vector{VN} where {VN<:AbstractVector{N}} where {N<:Real}
 
 Compute the convex hull of points in the plane using Andrew's monotone chain
 method.
@@ -85,8 +108,8 @@ construct the convex hull of a set of ``n`` points in the plane in
 For further details see
 [Monotone chain](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain)
 """
-function monotone_chain!(points::Vector{S}; sort::Bool=true
-                        )::Vector{S} where {S<:AbstractVector{N}} where {N<:Real}
+function monotone_chain!(points::Vector{VN}; sort::Bool=true
+                        )::Vector{VN} where {VN<:AbstractVector{N}} where {N<:Real}
     ...
 end
 ```
@@ -205,21 +228,6 @@ julia> subtypes(AbstractHPolygon)
 abstract type AbstractHPolygon{N<:Real} <: AbstractPolygon{N} end
 ````
 
-## More guidelines
-
-- When writing error messages, it is preferred to make the first word lowercase.
-
-- We try to stay within 80 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with `*`, as in:
-
-```julia
-    @assert dim(P) == size(M, 2) "a linear map of size $(size(M)) cannot be " *
-                                 "applied to a set of dimension $(dim(P))"
-```
-
-- By convention we use the full `function f() ... end` instead of `f() = ` one-liners. However the short form is preferable in constructors and aliases such as `×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y)`.
-
-- To indicate helper functions that are not part of the API, you can use a leading underscore for the function name, as in `_myfun`.
-
 ## Writing doctests
 
 Using [Documenter.jl](https://juliadocs.github.io/Documenter.jl/stable/), docstring examples can be incorporated to the doctesting framework using the `jldoctest` environment, see the [Doctests](https://juliadocs.github.io/Documenter.jl/stable/man/doctests/#Doctests-1) section of the documentation.
@@ -279,9 +287,9 @@ linear_map(::AbstractMatrix, P::AbstractPolygon{N}) where N
 In cases when there is no function overload, it is sufficient to write the function's name. For example, the function with signature
 
 ```julia
-function convex_hull!(points::Vector{S};
+function convex_hull!(points::Vector{VN};
                       algorithm::String="monotone_chain"
-                     )::Vector{S} where {N<:Real, S<:AbstractVector{N}}
+                     )::Vector{VN} where {N<:Real, VN<:AbstractVector{N}}
 ...
 end
 ```

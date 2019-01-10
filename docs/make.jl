@@ -6,7 +6,7 @@ makedocs(;
     pages = [
         "Home" => "index.md",
         "Adding a New Package" => "newpkg.md",
-        "Writing Documentation" => "guidelines.md",
+        "Coding Guidelines" => "guidelines.md",
         "About" => "about.md"
     ],
     repo="https://github.com/JuliaReach/JuliaReachDevDocs/blob/{commit}{path}#L{line}",
