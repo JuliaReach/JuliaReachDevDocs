@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Adding a New Package",
     "title": "Integrating the repository with gitter",
     "category": "section",
-    "text": "Github uses Webhooks to set up GitHub Apps which subscribe to certain events on github repositories. To make your newly created package under https://github.com/JuliaReach to be integrated with the main gitter channel https://gitter.im/JuliaReach/Lobby, do the following steps:In gitter, go to \"Room settings\", then click on \"Integrations\".\nSelect \"Add an integration (Github)\".\nYou may be asked to grant write access.\nIn the tab \"Pick which repositories you want to subscribe to.\", select the new created project. Note. If the project is hosted under the org, gitter should have been granted write access to it; see this FAQ for details."
+    "text": "Github uses Webhooks to set up GitHub Apps which subscribe to certain events on github repositories. To make your newly created package under https://github.com/JuliaReach to be integrated with the main gitter channel https://gitter.im/JuliaReach/Lobby, do the following steps:In gitter, go to Room settings, then click on Integrations.\nSelect Add an integration (Github).\nYou may be asked to grant write access.\nIn the tab Pick which repositories you want to subscribe to:, select the new created project.note: Note\nIf the project is hosted under the org, gitter should have been granted write access to it; see this FAQ for details."
 },
 
 {
@@ -69,7 +69,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Adding a New Package",
     "title": "Adding requirements",
     "category": "section",
-    "text": "These are links we have found useful:https://julialang.github.io/Pkg.jl/dev/creating-packages/#Test-specific-dependencies-1\nhttps://discourse.julialang.org/t/pkg-api-for-getting-uuid-of-another-package/15061/2"
+    "text": "These are links we have found useful:Testing specific dependencies\nGetting a valid uuid"
 },
 
 {
