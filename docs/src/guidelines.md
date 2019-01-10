@@ -5,7 +5,7 @@ Depth = 3
 
 # Coding Guidelines
 
-# Source-code guidelines
+## Source-code guidelines
 
 - In error messages, make the first word lowercase and do not add a period in the end.
 
