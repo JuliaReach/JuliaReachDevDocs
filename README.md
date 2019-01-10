@@ -9,8 +9,9 @@
 
 ## Resources
 
-- [Manual](http://juliareach.github.io/JuliaReachDevDocs/latest/)
-- [Contributing](https://juliareach.github.io/JuliaReachDevDocs/latest/about.html#Contributing-1)
+- [Contents](https://juliareach.github.io/JuliaReachDevDocs/latest/#Contents-1)
+- [Contributing](https://juliareach.github.io/JuliaReachDevDocs/latest/about/#Contributing-1)
+
 
 ## How to edit the dev docs
 
