@@ -43,7 +43,7 @@ Github uses [Webhooks](https://developer.github.com/webhooks/) to set up GitHub 
 
 !!! note
 
-    If the project is hosted under the org, gitter should have been granted write access to it; see [this     FAQ](https://gitlab.com/gitlab-org/gitter/webapp/blob/develop/docs/faq.md#what-happens-if-i-rename-something-on-github-org-repo) for details.
+    If the project is hosted under the org, gitter should have been granted write access to it; see [this FAQ](https://gitlab.com/gitlab-org/gitter/webapp/blob/develop/docs/faq.md#what-happens-if-i-rename-something-on-github-org-repo) for details.
 
 ## Adding requirements
 
