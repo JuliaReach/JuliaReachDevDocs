@@ -14,5 +14,5 @@ Pages = [
     "newpkg.md",
     "guidelines.md"
 ]
-Depth = 2
+Depth = 3
 ```
