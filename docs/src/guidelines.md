@@ -7,6 +7,8 @@ Depth = 3
 
 ## Source-code guidelines
 
+- Use 4 space characters for indentation. If you use the tab character, it should appear as 4-spaces-wide.
+
 - In error messages, make the first word lowercase and do not add a period in the end.
 
 - Try to stay within 80 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with `*`, as in:
@@ -25,6 +27,8 @@ Depth = 3
   * `S` for set types
 
 - To indicate helper functions that are not part of the API, use a leading underscore for the function name, as in `_myfun`.
+
+- Read [Julia's Style Guide](https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1).
 
 ## Documentation guidelines
 
