@@ -7,7 +7,7 @@ Depth = 3
 
 ## Source-code guidelines
 
-- Use 4 space characters for indentation. If you use the tab character, it should appear as 4-spaces-wide.
+- Use 4 space characters for indentation.
 
 - In error messages, make the first word lowercase and do not add a period in the end.
 
