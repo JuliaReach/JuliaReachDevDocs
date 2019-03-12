@@ -50,4 +50,11 @@ Github uses [Webhooks](https://developer.github.com/webhooks/) to set up GitHub 
 These are links we have found useful:
 
 - [Testing specific dependencies](https://julialang.github.io/Pkg.jl/dev/creating-packages/#Test-specific-dependencies-1)
-- [Getting a valid uuid](https://discourse.julialang.org/t/pkg-api-for-getting-uuid-of-another-package/15061/2)
+- [Getting a valid uuid](https://discourse.julialang.org/t/pkg-api-for-getting-uuid-of-another-package/15061/2):
+
+```julia
+julia> using Pkg
+
+julia> Pkg.METADATA_compatible_uuid("LazySets")
+UUID("b4f0291d-fe17-52bc-9479-3d1a343d9043")
+```
