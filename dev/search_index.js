@@ -69,7 +69,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Adding a New Package",
     "title": "Adding requirements",
     "category": "section",
-    "text": "These are links we have found useful:Testing specific dependencies\nGetting a valid uuid"
+    "text": "These are links we have found useful:Testing specific dependencies\nGetting a valid uuid:julia> using Pkg\n\njulia> Pkg.METADATA_compatible_uuid(\"LazySets\")\nUUID(\"b4f0291d-fe17-52bc-9479-3d1a343d9043\")"
 },
 
 {
