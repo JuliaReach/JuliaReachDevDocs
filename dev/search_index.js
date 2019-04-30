@@ -161,6 +161,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "guidelines/#Adding-plot-recipe-docstrings-1",
+    "page": "Coding Guidelines",
+    "title": "Adding plot recipe docstrings",
+    "category": "section",
+    "text": "A plot recipe can be added to the docs using the extension RecipesBase.apply_recipe. Moreover, it is important that you use pass the Dict{Symbol,Any}-type argument that corresponds to the plotting options; this argument is added automatically by the @recipe macro. Consider the example below:\"\"\"\n    plot_emptyset(∅::EmptySet, [ε]; ...)\n\nPlot an empty set.\n\n### Input\n\n- `∅` -- empty set\n- `ε` -- (optional, default: `0`) ignored, used for dispatch\n\n### Output\n\nAn empty figure.\n\"\"\"\n@recipe function plot_emptyset(∅::EmptySet{N}, ε::N=zero(N); label=\"\", grid=true,\n                               legend=false) where {N<:Real}\n    return []\nendThis example has an optional argument with default value. Inside a @docs block we can add the docstring as follows:RecipesBase.apply_recipe(::Dict{Symbol,Any}, ::EmptySet{N}, ::N=zero(N)) where {N<:Real}"
+},
+
+{
     "location": "about/#",
     "page": "About",
     "title": "About",
