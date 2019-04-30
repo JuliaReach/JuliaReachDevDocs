@@ -307,3 +307,34 @@ Is documented in `/docs/src/lib/operations.md` as:
 ...
 convex_hull!
 ```
+
+### Adding plot recipe docstrings
+
+A plot recipe can be added to the docs using the extension `RecipesBase.apply_recipe`. Moreover, it is important that you use pass the `Dict{Symbol,Any}`-type argument that corresponds to the plotting options; this argument is added automatically by the `@recipe` macro. Consider the example below:
+
+```julia
+"""
+    plot_emptyset(∅::EmptySet, [ε]; ...)
+
+Plot an empty set.
+
+### Input
+
+- `∅` -- empty set
+- `ε` -- (optional, default: `0`) ignored, used for dispatch
+
+### Output
+
+An empty figure.
+"""
+@recipe function plot_emptyset(∅::EmptySet{N}, ε::N=zero(N); label="", grid=true,
+                               legend=false) where {N<:Real}
+    return []
+end
+```
+
+This example has an optional argument with default value. Inside a `@docs` block we can add the docstring as follows:
+
+```julia
+RecipesBase.apply_recipe(::Dict{Symbol,Any}, ::EmptySet{N}, ::N=zero(N)) where {N<:Real}
+```
