@@ -12,6 +12,7 @@ DocTestFilters = [r"[0-9\.]+ seconds \(.*\)"]
 Pages = [
     "index.md",
     "newpkg.md",
+    "release.md",
     "guidelines.md"
 ]
 Depth = 3
