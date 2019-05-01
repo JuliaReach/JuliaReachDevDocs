@@ -3,22 +3,16 @@ language: julia
 
 os:
   - linux
-  - osx
 
 julia:
   - 1.0
-  - nightly
 
 matrix:
-  allow_failures:
-    - julia: nightly
   fast_finish: true
 
 notifications:
   email: false
 
-after_success:
-  - julia -e 'if VERSION < v"0.7-"; cd(Pkg.dir("JuliaReachDevDocs")); else; import Pkg; end;'
 jobs:
   include:
     - stage: "Documentation"
