@@ -6,6 +6,7 @@ makedocs(;
     pages = [
         "Home" => "index.md",
         "Adding a New Package" => "newpkg.md",
+        "Creating a New Release" => "release.md",
         "Coding Guidelines" => "guidelines.md",
         "About" => "about.md"
     ],
