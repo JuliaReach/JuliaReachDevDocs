@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Contents",
     "category": "section",
-    "text": "Pages = [\n    \"index.md\",\n    \"newpkg.md\",\n    \"guidelines.md\"\n]\nDepth = 3"
+    "text": "Pages = [\n    \"index.md\",\n    \"newpkg.md\",\n    \"release.md\",\n    \"guidelines.md\"\n]\nDepth = 3"
 },
 
 {
@@ -70,6 +70,70 @@ var documenterSearchIndex = {"docs": [
     "title": "Adding requirements",
     "category": "section",
     "text": "These are links we have found useful:Testing specific dependencies\nGetting a valid uuid:julia> using Pkg\n\njulia> Pkg.METADATA_compatible_uuid(\"LazySets\")\nUUID(\"b4f0291d-fe17-52bc-9479-3d1a343d9043\")"
+},
+
+{
+    "location": "release/#",
+    "page": "Creating a New Release",
+    "title": "Creating a New Release",
+    "category": "page",
+    "text": "Pages = [\"release.md\"]\nDepth = 3"
+},
+
+{
+    "location": "release/#Creating-a-new-release-1",
+    "page": "Creating a New Release",
+    "title": "Creating a new release",
+    "category": "section",
+    "text": "This is a short step-by-step manual on how to make a new release of a package."
+},
+
+{
+    "location": "release/#Choosing-a-new-release-version-1",
+    "page": "Creating a New Release",
+    "title": "Choosing a new release version",
+    "category": "section",
+    "text": "First you have to choose whether you want to create a patch release, a minor release, or a major release.Major releases are very rare cases for major breaking changes in the API, which should typically be avoided.\nMinor releases are used when some dependency has changed (e.g., a new dependency was added), a mild breaking change in the API was added, or some important feature was added.\nPatch releases are used for everything else.For more information, check Semantic Versioning."
+},
+
+{
+    "location": "release/#Preparing-the-release-1",
+    "page": "Creating a New Release",
+    "title": "Preparing the release",
+    "category": "section",
+    "text": "Edit the file Project.toml and change the version number of the package to the new version."
+},
+
+{
+    "location": "release/#Creating-a-new-release-2",
+    "page": "Creating a New Release",
+    "title": "Creating a new release",
+    "category": "section",
+    "text": "Choose the appropriate subsection for this step and locate the release notes. Usually we keep the release notes in the wiki part of the project (\"Release-log tracker\"). These release notes correspond to the development version of the package until the next release."
+},
+
+{
+    "location": "release/#Creating-a-new-release-on-General-(Julia-ecosystem-packages-only)-1",
+    "page": "Creating a New Release",
+    "title": "Creating a new release on General (Julia ecosystem packages only)",
+    "category": "section",
+    "text": "If the package is released in the Julia ecosystem, a pull request to General has to be made to make new versions available. Registrator is used for this purpose. Find the issue named Releases in the issue tracker and write the following comment.@JuliaRegistrator register()This will let Registrator trigger a pull request to General. Check that everything works there and then wait until the pull request gets merged. Then the TagBot will create a new release on Github. Finally, you need to manually write the release notes for that release."
+},
+
+{
+    "location": "release/#Creating-a-new-release-on-Github-1",
+    "page": "Creating a New Release",
+    "title": "Creating a new release on Github",
+    "category": "section",
+    "text": "If the package is not released in the Julia ecosystem, you can just manually create a release on Github with the corresponding release notes."
+},
+
+{
+    "location": "release/#Clean-up-the-release-log-1",
+    "page": "Creating a New Release",
+    "title": "Clean up the release log",
+    "category": "section",
+    "text": "Finally, remove the items from the release log in the wiki (keep the headlines, though)."
 },
 
 {
