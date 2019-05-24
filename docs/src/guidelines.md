@@ -11,6 +11,21 @@ Depth = 3
 
 - In error messages, make the first word lowercase and do not add a period in the end.
 
+- Use empty space in assignments:
+
+  -  `n=length(q)` :thumbsdown:
+  -  `n = length(q)` :thumbsup:
+
+- The previous convention has an exception: using `=` in keyword arguments:
+
+  - `convex_hull(p, algorithm = "monotone_chain")` :thumbsdown:
+  - `convex_hull(p, algorithm="monotone_chain")` :thumbsup:
+
+- Use empty space after commas:
+
+  - `evaluate(p,D)` :thumbsdown:
+  - `evaluate(p, D)` :thumbsup:
+
 - Try to stay within 80 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with `*`, as in:
 
 ```julia
