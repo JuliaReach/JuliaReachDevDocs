@@ -3,7 +3,7 @@ Pages = ["newpkg.md"]
 Depth = 3
 ```
 
-# Adding a New Package
+# Adding a new package
 
 ## Creating the github repository
 
@@ -11,7 +11,16 @@ To create an empty repository, go to your user name and click on `New`. If you h
 
 ## Creating the Julia package 
 
-An easy way to create an empty package is to use [PkgTemplates](https://github.com/invenia/PkgTemplates.jl). An example is given below:
+### Using `JuliaReachTemplatePkg`
+
+The github repository [JuliaReachTemplatePkg](https://github.com/JuliaReach/JuliaReachTemplatePkg)
+contains a template package for JuliaReach projects.
+
+### Using `PkgTemplates`
+
+Alternatively, an easy way to create an empty package is to use
+[PkgTemplates](https://github.com/invenia/PkgTemplates.jl).
+An example is given below:
 
 ```julia
 julia> using PkgTemplates
