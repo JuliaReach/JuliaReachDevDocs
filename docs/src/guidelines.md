@@ -3,7 +3,7 @@ Pages = ["guidelines.md"]
 Depth = 3
 ```
 
-# Coding Guidelines
+# Coding guidelines
 
 ## Source-code guidelines
 

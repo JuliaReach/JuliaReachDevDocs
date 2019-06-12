@@ -2,18 +2,18 @@ using Documenter, JuliaReachDevDocs
 
 makedocs(;
     doctest = false,
-    format = :html,
+    format = Documenter.HTML(assets = ["assets/juliareach.css"]),
     pages = [
         "Home" => "index.md",
-        "Adding a New Package" => "newpkg.md",
-        "Creating a New Release" => "release.md",
-        "Coding Guidelines" => "guidelines.md",
+        "Adding a new package" => "newpkg.md",
+        "Git workflow" => "workflow.md",
+        "Creating a new release" => "release.md",
+        "Coding guidelines" => "guidelines.md",
         "About" => "about.md"
     ],
     repo="https://github.com/JuliaReach/JuliaReachDevDocs/blob/{commit}{path}#L{line}",
     sitename="JuliaReachDevDocs",
-    authors="Marcelo Forets, Christian Schilling",
-    assets = ["assets/juliareach.css"],
+    authors="Marcelo Forets, Christian Schilling"
 )
 
 deploydocs(;
