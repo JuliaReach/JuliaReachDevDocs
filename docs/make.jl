@@ -2,7 +2,7 @@ using Documenter, JuliaReachDevDocs
 
 makedocs(;
     doctest = false,
-    format = :html,
+    format = Documenter.HTML(assets = ["assets/juliareach.css"]),
     pages = [
         "Home" => "index.md",
         "Adding a new package" => "newpkg.md",
@@ -13,8 +13,7 @@ makedocs(;
     ],
     repo="https://github.com/JuliaReach/JuliaReachDevDocs/blob/{commit}{path}#L{line}",
     sitename="JuliaReachDevDocs",
-    authors="Marcelo Forets, Christian Schilling",
-    assets = ["assets/juliareach.css"],
+    authors="Marcelo Forets, Christian Schilling"
 )
 
 deploydocs(;
