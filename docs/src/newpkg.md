@@ -37,6 +37,10 @@ Some settings are used in JuliaReach's projects:
 - update the README
 - add the style for docs in `docs/assets/juliareach.css`
 
+## Deploying the documentation
+
+Follow the guidelines described in [Documenter.jl's manual: Hosting documentation](https://juliadocs.github.io/Documenter.jl/stable/man/hosting/).
+
 ## Integrating the repository with gitter
 
 Github uses [Webhooks](https://developer.github.com/webhooks/) to set up GitHub Apps which subscribe to certain events on github repositories. To make your newly created package under `https://github.com/JuliaReach` to be integrated with the main gitter channel `https://gitter.im/JuliaReach/Lobby`, do the following steps:
