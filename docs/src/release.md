@@ -26,7 +26,7 @@ For more information, check [Semantic Versioning](https://semver.org/).
 ## Preparing the release
 
 Edit the file `Project.toml` and change the version number of the package to the
-new version.
+new version. Make a new pull request and wait until CI passes and the PR gets merged.
 
 
 ## Creating a new release
