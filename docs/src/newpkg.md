@@ -71,3 +71,13 @@ julia> using Pkg
 julia> Pkg.METADATA_compatible_uuid("LazySets")
 UUID("b4f0291d-fe17-52bc-9479-3d1a343d9043")
 ```
+
+## Adding code coverage
+
+Enable [codecov](https://codecov.io/) in the `.travis.yml` file:
+
+```julia
+codecov: true
+language: julia
+...
+```
