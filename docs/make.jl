@@ -1,8 +1,15 @@
 using Documenter, JuliaReachDevDocs
 
+DocMeta.setdocmeta!(JuliaReachDevDocs, :DocTestSetup,
+                    :(using JuliaReachDevDocs); recursive=true)
+
 makedocs(;
-    doctest = false,
-    format = Documenter.HTML(assets = ["assets/juliareach.css"]),
+    sitename = "JuliaReachDevDocs",
+    authors = "Marcelo Forets, Christian Schilling",
+    modules = [JuliaReachDevDocs],
+    format = Documenter.HTML(
+        prettyurls = get(ENV, "CI", nothing) == "true",
+        assets = ["assets/juliareach.css"]),
     pages = [
         "Home" => "index.md",
         "Adding a new package" => "newpkg.md",
@@ -11,14 +18,9 @@ makedocs(;
         "Coding guidelines" => "guidelines.md",
         "About" => "about.md"
     ],
-    repo="https://github.com/JuliaReach/JuliaReachDevDocs/blob/{commit}{path}#L{line}",
-    sitename="JuliaReachDevDocs",
-    authors="Marcelo Forets, Christian Schilling"
+    strict = true
 )
 
-deploydocs(;
-    repo="github.com/JuliaReach/JuliaReachDevDocs",
-    target="build",
-    deps=nothing,
-    make=nothing
+deploydocs(
+    repo = "github.com/JuliaReach/JuliaReachDevDocs"
 )
