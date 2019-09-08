@@ -33,6 +33,9 @@ Depth = 3
                                  "applied to a set of dimension $(dim(P))"
 ```
 
+!!! note
+    The 80 characters rule should not be enforced arbitrarily, but is rather a soft guideline.
+
 - Use the full `function f() ... end` instead of `f() = ...`. However, the short form is preferable in constructors and aliases such as `×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y)`.
 
 - Use the following conventions for type parameters:
@@ -353,3 +356,9 @@ This example has an optional argument with default value. Inside a `@docs` block
 ```julia
 RecipesBase.apply_recipe(::Dict{Symbol,Any}, ::EmptySet{N}, ::N=zero(N)) where {N<:Real}
 ```
+
+## Other style guides
+
+Below we list other Julia code style guides that we have found interesting. 
+
+- [Yet Another Style Guide For Julia](https://github.com/jrevels/YASGuide)
