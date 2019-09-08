@@ -34,7 +34,7 @@ Depth = 3
 ```
 
 !!! note
-    The 80 characters rule should not be enforced arbitrarily, but is rather a soft guideline.
+    The 80 characters rule should not be enforced in all cases, but is rather a soft guideline.
 
 - Use the full `function f() ... end` instead of `f() = ...`. However, the short form is preferable in constructors and aliases such as `×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y)`.
 
