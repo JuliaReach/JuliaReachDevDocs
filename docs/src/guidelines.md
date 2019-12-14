@@ -13,18 +13,18 @@ Depth = 3
 
 - Use empty space in assignments:
 
-  -  `n=length(q)` :thumbsdown:
-  -  `n = length(q)` :thumbsup:
+  -  `n=length(q)` (no)
+  -  `n = length(q)` (yes)
 
 - The previous convention has an exception: using `=` in keyword arguments:
 
-  - `convex_hull(p, algorithm = "monotone_chain")` :thumbsdown:
-  - `convex_hull(p, algorithm="monotone_chain")` :thumbsup:
+  - `convex_hull(p, algorithm = "monotone_chain")` (no)
+  - `convex_hull(p, algorithm="monotone_chain")` (yes)
 
 - Use empty space after commas:
 
-  - `evaluate(p,D)` :thumbsdown:
-  - `evaluate(p, D)` :thumbsup:
+  - `evaluate(p,D)` (no)
+  - `evaluate(p, D)` (yes)
 
 - Try to stay within 80 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with `*`, as in:
 
