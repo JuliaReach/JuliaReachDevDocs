@@ -3,5 +3,16 @@ uuid = "bdb38ff1-04af-56c0-89d5-731474b8680c"
 authors = ["mforets <mforets@gmail.com>"]
 version = "0.1.0"
 
+[deps]
+# add strict dependencies here
+
 [compat]
-julia = "≥ 1.0.0"
+# add compatibility restrictions for dependencies here
+julia = "1"
+
+[extras]
+# add optional dependencies here
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
