@@ -19,9 +19,9 @@ followed by a descriptive name, e.g., `mforets/my_feature`.
 If the branch is associated to a previous discussion in one issue, we use the
 name of the issue for easier lookup, e.g., `mforets/7`.
 
-## Unit testing and continuous integration (CI)
+## Unit testing and continuous integration
 
-This project is synchronized with Travis CI such that each PR gets tested before
+This project is synchronized with Travis continuous integration (CI) such that each PR gets tested before
 merging (and the build is automatically triggered after each new commit).
 For the maintainability of this project, it is important to understand and fix
 the failing doctests if they exist.
@@ -80,7 +80,7 @@ $ julia --color=yes docs/make.jl
 
 Note that this also runs all doctests which will take some time.
 
-## Review a pull request from a fork
+## Reviewing a pull request from a fork
 
 To pull a PR numbered `x` from a fork, do
 
@@ -88,4 +88,37 @@ To pull a PR numbered `x` from a fork, do
 $ git fetch origin pull/x/head:pr/x && git checkout pr/x
 ```
 
-## 
+## Contributing from a fork
+
+It is not uncommon that user A wants to contribute to package X and A doesn't
+have write access to X. In that case, the usual procedure is that A creates a fork
+of X, and then creates a PR to be merged by the maintainer of package X.
+You have to properly setup the branches to do so:
+
+- `origin`   -- is usually set to the fork of the project
+- `upstream` -- is usually set to the main project
+
+For example, suppose that user `mforets` would like to setup the pacakge `Polyhedra`
+working from a fork. The git command `git remote -v` prints all the remote repositories,
+and you can modify them with `git remote add` to add a new one and
+`git remote set-url` to change the URL of an existing repository (it also possible to
+manually edit the file `.git/config`). In the example:
+
+```
+[mforets@localhost dev]$ cd Polyhedra
+
+[mforets@localhost Polyhedra]$ git remote -v
+origin  https://github.com/JuliaPolyhedra/Polyhedra.jl.git (fetch)
+origin  https://github.com/JuliaPolyhedra/Polyhedra.jl.git (push)
+
+[mforets@localhost Polyhedra]$ git remote add upstream https://github.com/JuliaPolyhedra/Polyhedra.jl.git
+
+[mforets@localhost Polyhedra]$ git remote set-url origin https://github.com/mforets/Polyhedra.jl.git
+
+[mforets@localhost Polyhedra]$ git remote -v
+origin  https://github.com/mforets/Polyhedra.jl.git (fetch)
+origin  https://github.com/mforets/Polyhedra.jl.git (push)
+
+upstream        https://github.com/JuliaPolyhedra/Polyhedra.jl.git (fetch)
+upstream        https://github.com/JuliaPolyhedra/Polyhedra.jl.git (push)
+```

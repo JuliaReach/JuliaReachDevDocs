@@ -363,6 +363,16 @@ This example has an optional argument with default value. Inside a `@docs` block
 RecipesBase.apply_recipe(::Dict{Symbol,Any}, ::EmptySet{N}, ::N=zero(N)) where {N<:Real}
 ```
 
+### Resizing an image in the documentation
+
+It is possible with Documenter to add content using raw HTML with the macro `@raw`.
+That lets, for example, to include an image and fix the size: between a `@raw html`
+block, write
+
+```
+<img src="path/to/image.png" width="25%"/>
+```
+
 ## Other style guides
 
 Below we list other Julia code style guides that we have found interesting.
