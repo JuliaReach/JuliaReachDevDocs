@@ -122,3 +122,14 @@ origin  https://github.com/mforets/Polyhedra.jl.git (push)
 upstream        https://github.com/JuliaPolyhedra/Polyhedra.jl.git (fetch)
 upstream        https://github.com/JuliaPolyhedra/Polyhedra.jl.git (push)
 ```
+
+## Editors
+
+There is no official IDE for Julia. For those using Atom editor, there are several
+plugins for Julia development, among them:
+
+- language-julia -- code highlighting, etc.
+- language-markdown -- support for Markdown files
+- latex-completions -- auto-completions, eg. for LaTeX symbols as in `\alpha[TAB]` that prints α
+- markdown-preview-plus -- preview Markdown files
+- platformio-ide-terminal -- terminal embedded in the editor
