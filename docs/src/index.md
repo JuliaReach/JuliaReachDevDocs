@@ -1,6 +1,6 @@
 # JuliaReachDevDocs
 
-`JuliaReachDevDocs` hosts resources for JuliaReach org developers.
+`JuliaReachDevDocs` hosts resources for the [JuliaReach](http://github.com/JuliaReach) github organization developers.
 
 ## Contents
 

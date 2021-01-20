@@ -1,7 +1,8 @@
 # Git workflow
 
 This page contains some general information about the recommended workflow
-to develop `JuliaReach` projects and some FAQs.
+to develop `JuliaReach` projects and some frequently asked questions
+& git workflow tips.
 
 ```@contents
 Pages = ["workflow.md"]
@@ -79,12 +80,12 @@ $ julia --color=yes docs/make.jl
 
 Note that this also runs all doctests which will take some time.
 
-## FAQ
-
-### How to review a pull request from a fork
+## Review a pull request from a fork
 
 To pull a PR numbered `x` from a fork, do
 
 ```
 $ git fetch origin pull/x/head:pr/x && git checkout pr/x
 ```
+
+## 

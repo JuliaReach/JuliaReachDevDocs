@@ -1,12 +1,11 @@
-```@contents
-Pages = ["release.md"]
-Depth = 3
-```
-
 # Creating a new release
 
 This is a short step-by-step manual on how to make a new release of a package.
 
+```@contents
+Pages = ["release.md"]
+Depth = 3
+```
 
 ## Choosing a new release version
 
