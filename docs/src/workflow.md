@@ -101,7 +101,7 @@ You have to properly setup the branches to do so:
 For example, suppose that user `mforets` would like to setup the pacakge `Polyhedra`
 working from a fork. The git command `git remote -v` prints all the remote repositories,
 and you can modify them with `git remote add` to add a new one and
-`git remote set-url` to change the URL of an existing repository (it also possible to
+`git remote set-url` to change the URL of an existing repository (it is also possible to
 manually edit the file `.git/config`). In the example:
 
 ```
