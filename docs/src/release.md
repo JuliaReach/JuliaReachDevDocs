@@ -1,12 +1,14 @@
+# Releases and bots
+
+This is a short step-by-step manual on how to make a new release of a package.
+In the process of maintaining a package, updating dependencies, etc.,
+there are some "bots" (services) that are commonly used in Julia projects. Those
+are also mentioned in this section.
+
 ```@contents
 Pages = ["release.md"]
 Depth = 3
 ```
-
-# Creating a new release
-
-This is a short step-by-step manual on how to make a new release of a package.
-
 
 ## Choosing a new release version
 
@@ -67,3 +69,38 @@ create a release on Github with the corresponding release notes.
 
 Finally, remove the items from the release log in the wiki (keep the headlines,
 though).
+
+## Compability bot
+
+The Julia package [CompatHelper.jl](https://github.com/JuliaRegistries/CompatHelper.jl)
+can be used to automatically update the `[compat]` entries for your Julia package's
+dependencies. It is easy to install; just create and edit the file
+`.github/workflows/CompatHelper.yml` as described in `CompatHelper.jl`'s documentation.
+Once installed, this github action will automatically create PRs to update compatibility
+bounds of the dependencies of the package.
+
+## Registrator bot
+
+The [Registrator.jl](https://github.com/JuliaRegistries/Registrator.jl) bot is a
+github app that automates creation of registration pull requests for your Julia packages
+to the General registry. To install, just click on the installation button that can be
+found on `Registrator.jl`'s documentation. Once installed, the usual procedure to
+register a new release is:
+
+The procedure for registering a new package is the same as for releasing a new version.
+
+- Set your project's `Project.toml` version field in your repository to your new desired version.
+
+- Comment `@JuliaRegistrator register` on the commit/branch you want to register.
+
+- Either rely on the TagBot GitHub Action to tag and make a github release automatically
+  (recommended, see [Tag bot](@ref) below) or alternatively tag the release manually.
+
+## Tag bot
+
+The [TagBot](https://github.com/JuliaRegistries/TagBot) github action is used to
+automatically create tags, releases, and changelogs for your Julia packages when they're
+registered. It is easy to install; just create and edit the file
+`.github/workflows/TagBot.yml` as described in `TagBot`'s documentation.
+Once installed, this github action will automatically create a release and tag a release
+log each time the package was registered using `JuliaRegistrator @register`.

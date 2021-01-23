@@ -10,5 +10,5 @@ Pages = ["about.md"]
 
 These persons have contributed to `JuliaReachDevDocs` (in alphabetic order):
 
-- [Marcelo Forets](http://main.marcelo-forets.fr)
+- [Marcelo Forets](http://github.com/mforets)
 - [Christian Schilling](https://schillic.github.io/)

@@ -1,15 +1,17 @@
+# Adding a new package
+
+In this section we describe the usual procedure to add a new package.
+
 ```@contents
 Pages = ["newpkg.md"]
 Depth = 3
 ```
 
-# Adding a new package
-
 ## Creating the github repository
 
 To create an empty repository, go to your user name and click on `New`. If you have write access to the [JuliaReach](http://juliareach.org) org, click on `New` on the top-right or go to the link [Create a new repository](https://github.com/organizations/JuliaReach/repositories/new).
 
-## Creating the Julia package 
+## Creating the Julia package
 
 ### Using `JuliaReachTemplatePkg`
 
@@ -32,7 +34,7 @@ julia> t = Template(; user="JuliaReach", license="MIT",
 julia> generate("MathematicalSets", t)
 ```
 
-Some settings are used in JuliaReach's projects: 
+Some settings are used in JuliaReach's projects:
 
 - update the README
 - add the style for docs in `docs/assets/juliareach.css`

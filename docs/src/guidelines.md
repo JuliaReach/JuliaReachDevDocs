@@ -1,9 +1,13 @@
+# Coding guidelines
+
+This section is a reference for commonly used coding guidelines adopted in JuliaReach
+projects. There are several style guides in the Julia ecosystem;
+see [Other style guides](@ref) for some of them.
+
 ```@contents
 Pages = ["guidelines.md"]
 Depth = 3
 ```
-
-# Coding guidelines
 
 ## Source-code guidelines
 
@@ -36,7 +40,8 @@ Depth = 3
 !!! note
     The 80 characters rule should not be enforced in all cases, but is rather a soft guideline.
 
-- Use the full `function f() ... end` instead of `f() = ...`. However, the short form is preferable in constructors and aliases such as `×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y)`.
+- Use the full `function f() ... end` instead of `f() = ...`. However, the short
+  form is preferable in constructors and aliases such as `×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y)`.
 
 - Use the following conventions for type parameters:
   * `N` for numeric types
@@ -44,7 +49,8 @@ Depth = 3
   * `MN` for matrices of numeric type `N`
   * `S` for set types
 
-- To indicate helper functions that are not part of the API, use a leading underscore for the function name, as in `_myfun`.
+- To indicate helper functions that are not part of the API, use a leading
+  underscore for the function name, as in `_myfun`.
 
 - Read [Julia's Style Guide](https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1).
 
@@ -56,7 +62,7 @@ To generate the HTML documentation we rely on the `docs/make.jl` script that is 
 
 ```
 $ julia --color=yes docs/make.jl
-``` 
+```
 This will deploy the docs in `docs/build` with `index.html` being the start page.
 
 Observe that the `docs/build` folder is and should not be included in the `master` branch: in fact, the build system automatically pushes this folder to the `gh-pages` branch after each commit. This means that each time that a commit is merged into the `master` branch in Github, the updated documentation will be available as soon as the continuous integration finishes (this usually takes a couple of minutes).
@@ -73,7 +79,7 @@ Notice that the string is inside double back-ticks, and that we use the TAB key 
 
 ```
 ``\\mathcal{X}_0``
-``` 
+```
 
 Finally, Documenter can also parse usual LaTeX dollar sign notation for the Markdown files. In that case, only one backslash is needed. For more examples consult [Documenter.jl](https://juliadocs.github.io/Documenter.jl/stable/) or check the various examples in our project's source code.
 
@@ -245,7 +251,7 @@ Every concrete `AbstractHPolygon` must have the following fields:
 ```jldoctest
 julia> subtypes(AbstractHPolygon)
 2-element Array{Union{DataType, UnionAll},1}:
- LazySets.HPolygon   
+ LazySets.HPolygon
  LazySets.HPolygonOpt
 ```
 """
@@ -357,10 +363,23 @@ This example has an optional argument with default value. Inside a `@docs` block
 RecipesBase.apply_recipe(::Dict{Symbol,Any}, ::EmptySet{N}, ::N=zero(N)) where {N<:Real}
 ```
 
+### Resizing an image in the documentation
+
+It is possible with Documenter to add content using raw HTML with the macro `@raw`.
+That lets, for example, to include an image and fix the size: between a `@raw html`
+block, write
+
+```
+<img src="path/to/image.png" width="25%"/>
+```
+
 ## Other style guides
 
-Below we list other Julia code style guides that we have found interesting. 
+Below we list other Julia code style guides that we have found interesting.
 
 - [Yet Another Style Guide For Julia](https://github.com/jrevels/YASGuide)
 - [JuMP.jl style guide](http://www.juliaopt.org/JuMP.jl/dev/style/#Style-guide-and-design-principles-1)
 - [Julia style guide](https://docs.julialang.org/en/v1.2/manual/style-guide/#Style-Guide-1)
+- [ColPrac](https://github.com/SciML/ColPrac) -- Describes some best
+  practices for collaborating on repositories. Following these practices makes it easier
+  for contributors (new and old) to understand what is expected of them.

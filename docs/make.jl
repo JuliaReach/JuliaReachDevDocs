@@ -14,7 +14,7 @@ makedocs(;
         "Home" => "index.md",
         "Adding a new package" => "newpkg.md",
         "Git workflow" => "workflow.md",
-        "Creating a new release" => "release.md",
+        "Releases and bots" => "release.md",
         "Coding guidelines" => "guidelines.md",
         "About" => "about.md"
     ],
