@@ -125,7 +125,7 @@ upstream        https://github.com/JuliaPolyhedra/Polyhedra.jl.git (push)
 
 ## Editors
 
-There is no official IDE for Julia. For those using Atom editor, there are several
+There is no official IDE for Julia. For those using the [Atom](https://atom.io/) editor, there are several
 plugins for Julia development, among them:
 
 - language-julia -- code highlighting, etc.
