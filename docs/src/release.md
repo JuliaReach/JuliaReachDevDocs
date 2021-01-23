@@ -87,7 +87,7 @@ to the General registry. To install, just click on the installation button that 
 found on `Registrator.jl`'s documentation. Once installed, the usual procedure to
 register a new release is:
 
-First, install the app on your package(s) as mentioned above. The procedure for registering a new package is the same as for releasing a new version.
+The procedure for registering a new package is the same as for releasing a new version.
 
 - Set your project's `Project.toml` version field in your repository to your new desired version.
 
