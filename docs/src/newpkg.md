@@ -117,7 +117,9 @@ Add rules for branch protection under *Settings/Branches* for the `master` and
 
 ## Reduce repo size
 
-See [clean-gh-pages.yml](https://raw.githubusercontent.com/JuliaReach/NeuralNetworkAnalysis.jl/master/.github/workflows/clean-gh-pages.yml).
+The page  https://github.com/settings/repositories lists each repo size.
+
+To cleanup past docs preview folders, see [clean-gh-pages.yml](https://raw.githubusercontent.com/JuliaReach/NeuralNetworkAnalysis.jl/master/.github/workflows/clean-gh-pages.yml).
 
 That works but it only removes the last preview for the current PR. And if the PR is closed before the preview is pushed, that run errors and does not remove the folder. To remove all previews from the history, one can do this locally:
 
