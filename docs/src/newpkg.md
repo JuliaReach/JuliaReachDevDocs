@@ -114,3 +114,20 @@ Add rules for branch protection under *Settings/Branches* for the `master` and
 
 - Install JuliaTeam Registrator (under *Settings/Integrations & services*).
 - Copy the file `.github/workflows/TagBot.yml` from an existing repository.
+
+## Reduce repo size
+
+See [clean-gh-pages.yml](https://raw.githubusercontent.com/JuliaReach/NeuralNetworkAnalysis.jl/master/.github/workflows/clean-gh-pages.yml).
+
+That works but it only removes the last preview for the current PR. And if the PR is closed before the preview is pushed, that run errors and does not remove the folder. To remove all previews from the history, one can do this locally:
+
+```
+git rm -rf "previews/PR*"
+git commit -m "delete previews"
+git branch gh-pages-new $(echo "delete history" | git commit-tree HEAD^{tree})
+git push --force origin gh-pages-new:gh-pages
+git checkout master
+git branch -D gh-pages gh-pages-new
+```
+
+Something that can also help to shrink the local git size (especially after this change): `git gc`.
