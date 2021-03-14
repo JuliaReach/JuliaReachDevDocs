@@ -124,6 +124,7 @@ To cleanup past docs preview folders, see [clean-gh-pages.yml](https://raw.githu
 That works but it only removes the last preview for the current PR. And if the PR is closed before the preview is pushed, that run errors and does not remove the folder. To remove all previews from the history, one can do this locally:
 
 ```
+git checkout gh-pages
 git rm -rf "previews/PR*"
 git commit -m "delete previews"
 git branch gh-pages-new $(echo "delete history" | git commit-tree HEAD^{tree})
