@@ -1,6 +1,5 @@
 name = "JuliaReachDevDocs"
 uuid = "bdb38ff1-04af-56c0-89d5-731474b8680c"
-authors = ["mforets <mforets@gmail.com>"]
 version = "0.1.0"
 
 [deps]
