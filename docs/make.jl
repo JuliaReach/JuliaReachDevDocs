@@ -5,7 +5,6 @@ DocMeta.setdocmeta!(JuliaReachDevDocs, :DocTestSetup,
 
 makedocs(;
     sitename = "JuliaReachDevDocs",
-    authors = "Marcelo Forets, Christian Schilling",
     modules = [JuliaReachDevDocs],
     format = Documenter.HTML(
         prettyurls = get(ENV, "CI", nothing) == "true",
