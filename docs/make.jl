@@ -8,7 +8,7 @@ makedocs(;
     modules = [JuliaReachDevDocs],
     format = Documenter.HTML(
         prettyurls = get(ENV, "CI", nothing) == "true",
-        assets = ["assets/juliareach.css"]),
+        assets = ["assets/aligned.css"]),
     pages = [
         "Home" => "index.md",
         "Adding a new package" => "newpkg.md",
