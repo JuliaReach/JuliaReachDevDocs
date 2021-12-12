@@ -9,6 +9,7 @@ makedocs(;
     format = Documenter.HTML(
         prettyurls = get(ENV, "CI", nothing) == "true",
         assets = ["assets/aligned.css"]),
+    strict = true,
     pages = [
         "Home" => "index.md",
         "Adding a new package" => "newpkg.md",
@@ -16,8 +17,7 @@ makedocs(;
         "Releases and bots" => "release.md",
         "Coding guidelines" => "guidelines.md",
         "About" => "about.md"
-    ],
-    strict = true
+    ]
 )
 
 deploydocs(
