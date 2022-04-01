@@ -379,7 +379,7 @@ Below we list other Julia code style guides that we have found interesting.
 
 - [Yet Another Style Guide For Julia](https://github.com/jrevels/YASGuide)
 - [JuMP.jl style guide](http://www.juliaopt.org/JuMP.jl/dev/style/#Style-guide-and-design-principles-1)
-- [Julia style guide](https://docs.julialang.org/en/v1.2/manual/style-guide/#Style-Guide-1)
+- [Julia style guide](https://docs.julialang.org/en/v1/manual/style-guide/)
 - [ColPrac](https://github.com/SciML/ColPrac) -- Describes some best
   practices for collaborating on repositories. Following these practices makes it easier
   for contributors (new and old) to understand what is expected of them.
