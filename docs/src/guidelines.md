@@ -11,6 +11,10 @@ Depth = 3
 
 ## Source-code guidelines
 
+In general the guidelines follow the rules in the
+[`.JuliaFormatter.toml`](https://github.com/JuliaReach/JuliaReachDevDocs/blob/master/.JuliaFormatter.toml)
+file.
+
 - Use 4 space characters for indentation.
 
 - In error messages, make the first word lowercase and do not add a period in the end.
@@ -30,7 +34,7 @@ Depth = 3
   - `evaluate(p,D)` (no)
   - `evaluate(p, D)` (yes)
 
-- Try to stay within 80 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with `*`, as in:
+- Try to stay within 100 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with `*`, as in:
 
 ```julia
     @assert dim(P) == size(M, 2) "a linear map of size $(size(M)) cannot be " *
@@ -38,7 +42,7 @@ Depth = 3
 ```
 
 !!! note
-    The 80 characters rule should not be enforced in all cases, but is rather a soft guideline.
+    The 100 characters rule should not be enforced in all cases, but is rather a soft guideline.
 
 - Use the full `function f() ... end` instead of `f() = ...`. However, the short
   form is preferable in constructors and aliases such as `×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y)`.
