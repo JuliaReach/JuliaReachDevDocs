@@ -25,7 +25,7 @@ interface, or fork the repository and push the proposed changes in a new branch.
 
 To build the documentation, use the following command in a command shell:
 
-```julia
+```bash
 $ julia --color=yes docs/make.jl
 ```
 
