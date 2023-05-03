@@ -1,9 +1,15 @@
 # JuliaReachDevDocs
 
-[![Build Status](https://github.com/JuliaReach/JuliaReachDevDocs/workflows/Documentation/badge.svg)](https://github.com/JuliaReach/JuliaReachDevDocs/actions?query=workflow%3ADocumentation)
-[![Docs latest](https://img.shields.io/badge/docs-latest-blue.svg)](http://juliareach.github.io/JuliaReachDevDocs/latest/)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/JuliaReach/JuliaReachDevDocs/blob/master/LICENSE)
-[![Join the chat at https://gitter.im/JuliaReach/Lobby](https://badges.gitter.im/JuliaReach/Lobby.svg)](https://gitter.im/JuliaReach/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+| **Documentation** | **Community** | **License** |
+|:-----------------:|:-------------:|:-----------:|
+| [![docs-dev][dev-img]][dev-url] | [![gitter][chat-img]][chat-url] | [![license][lic-img]][lic-url] |
+
+[dev-img]: https://img.shields.io/badge/docs-latest-blue.svg
+[dev-url]: https://juliareach.github.io/JuliaReachDevDocs.jl/dev/
+[chat-img]: https://img.shields.io/badge/zulip-join_chat-brightgreen.svg
+[chat-url]: https://julialang.zulipchat.com/#narrow/stream/278609-juliareach
+[lic-img]: https://img.shields.io/github/license/mashape/apistatus.svg
+[lic-url]: https://github.com/JuliaReach/JuliaReachDevDocs.jl/blob/master/LICENSE
 
 `JuliaReachDevDocs` hosts resources for JuliaReach org developers.
 
@@ -19,7 +25,7 @@ interface, or fork the repository and push the proposed changes in a new branch.
 
 To build the documentation, use the following command in a command shell:
 
-```julia
+```bash
 $ julia --color=yes docs/make.jl
 ```
 

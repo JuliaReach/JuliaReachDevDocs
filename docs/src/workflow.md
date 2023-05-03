@@ -21,26 +21,16 @@ name of the issue for easier lookup, e.g., `mforets/7`.
 
 ## Unit testing and continuous integration
 
-This project is synchronized with Travis continuous integration (CI) such that each PR gets tested before
-merging (and the build is automatically triggered after each new commit).
-For the maintainability of this project, it is important to understand and fix
-the failing doctests if they exist.
-We develop in Julia v0.6.0, but for experimentation we also build on the nightly
-branch.
-
-When you modify code in this package, you should make sure that all unit tests
+This project is synchronized with GitHub Actions such that each PR gets tested
+before merging (and the build is automatically triggered after each new commit).
+For the maintainability of this project, it is important to make all unit tests
 pass.
-To run the unit tests locally, you should do:
 
-```
-$ julia --color=yes test/runtests.jl
-```
-
-Alternatively, you can achieve the same from inside the REPL using the following
-command:
+To run the unit tests locally, you can do:
 
 ```julia
 julia> using Pkg
+
 julia> Pkg.test("MathematicalSets")
 ```
 
@@ -58,7 +48,7 @@ followed by the name of the type or function.
 For example, the following command will print the documentation of the `AbstractSet`
 type:
 
-```julia
+```
 julia> ?AbstractSet
 ```
 
@@ -74,7 +64,7 @@ or our sources for examples).
 To generate the documentation locally, run `make.jl`, e.g., by executing the
 following command in the terminal:
 
-```
+```bash
 $ julia --color=yes docs/make.jl
 ```
 
@@ -84,7 +74,7 @@ Note that this also runs all doctests which will take some time.
 
 To pull a PR numbered `x` from a fork, do
 
-```
+```bash
 $ git fetch origin pull/x/head:pr/x && git checkout pr/x
 ```
 
