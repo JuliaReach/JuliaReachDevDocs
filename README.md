@@ -2,7 +2,7 @@
 
 | **Documentation** | **Community** | **License** |
 |:-----------------:|:-------------:|:-----------:|
-| [![docs-dev][dev-img]][dev-url] | [![gitter][chat-img]][chat-url] | [![license][lic-img]][lic-url] |
+| [![docs-dev][dev-img]][dev-url] | [![zulip][chat-img]][chat-url] | [![license][lic-img]][lic-url] |
 
 [dev-img]: https://img.shields.io/badge/docs-latest-blue.svg
 [dev-url]: https://juliareach.github.io/JuliaReachDevDocs.jl/dev/
