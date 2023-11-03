@@ -70,7 +70,7 @@ create a release on Github with the corresponding release notes.
 Finally, remove the items from the release log in the wiki (keep the headlines,
 though).
 
-## Compability bot
+## Compatibility bot
 
 The Julia package [CompatHelper.jl](https://github.com/JuliaRegistries/CompatHelper.jl)
 can be used to automatically update the `[compat]` entries for your Julia package's

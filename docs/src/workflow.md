@@ -88,7 +88,7 @@ You have to properly setup the branches to do so:
 - `origin`   -- is usually set to the fork of the project
 - `upstream` -- is usually set to the main project
 
-For example, suppose that user `mforets` would like to setup the pacakge `Polyhedra`
+For example, suppose that user `mforets` would like to setup the package `Polyhedra`
 working from a fork. The git command `git remote -v` prints all the remote repositories,
 and you can modify them with `git remote add` to add a new one and
 `git remote set-url` to change the URL of an existing repository (it is also possible to
