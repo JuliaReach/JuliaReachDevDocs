@@ -2,16 +2,18 @@
 
 | **Documentation** | **Status** | **Community** | **License** |
 |:-----------------:|:----------:|:-------------:|:-----------:|
-| [![docs-dev][dev-img]][dev-url] | [![aqua][aqua-img]][aqua-url] | [![zulip][chat-img]][chat-url] | [![license][lic-img]][lic-url] |
+| [![docs-dev][dev-img]][dev-url] | [![CI][ci-img]][ci-url] [![aqua][aqua-img]][aqua-url] | [![zulip][chat-img]][chat-url] | [![license][lic-img]][lic-url] |
 
 [dev-img]: https://img.shields.io/badge/docs-latest-blue.svg
-[dev-url]: https://juliareach.github.io/JuliaReachDevDocs.jl/dev/
+[dev-url]: https://juliareach.github.io/JuliaReachDevDocs/dev/
+[ci-img]: https://github.com/JuliaReach/JuliaReachDevDocs/workflows/CI/badge.svg
+[ci-url]: https://github.com/JuliaReach/JuliaReachDevDocs/actions/workflows/test-master.yml
 [aqua-img]: https://raw.githubusercontent.com/JuliaTesting/Aqua.jl/master/badge.svg
 [aqua-url]: https://github.com/JuliaTesting/Aqua.jl
 [chat-img]: https://img.shields.io/badge/zulip-join_chat-brightgreen.svg
 [chat-url]: https://julialang.zulipchat.com/#narrow/stream/278609-juliareach
 [lic-img]: https://img.shields.io/github/license/mashape/apistatus.svg
-[lic-url]: https://github.com/JuliaReach/JuliaReachDevDocs.jl/blob/master/LICENSE
+[lic-url]: https://github.com/JuliaReach/JuliaReachDevDocs/blob/master/LICENSE
 
 `JuliaReachDevDocs` hosts resources for JuliaReach org developers.
 
