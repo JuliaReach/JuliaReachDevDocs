@@ -6,7 +6,7 @@
 
 [dev-img]: https://img.shields.io/badge/docs-latest-blue.svg
 [dev-url]: https://juliareach.github.io/JuliaReachDevDocs/dev/
-[ci-img]: https://github.com/JuliaReach/JuliaReachDevDocs/workflows/CI/badge.svg
+[ci-img]: https://github.com/JuliaReach/JuliaReachDevDocs/actions/workflows/test-master.yml/badge.svg
 [ci-url]: https://github.com/JuliaReach/JuliaReachDevDocs/actions/workflows/test-master.yml
 [aqua-img]: https://raw.githubusercontent.com/JuliaTesting/Aqua.jl/master/badge.svg
 [aqua-url]: https://github.com/JuliaTesting/Aqua.jl
