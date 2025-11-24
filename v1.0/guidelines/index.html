@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Coding guidelines · JuliaReachDevDocs</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link href="../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../assets/juliareach.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>JuliaReachDevDocs</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../">Home</a></li><li><a class="toctext" href="../newpkg/">Adding a new package</a></li><li><a class="toctext" href="../workflow/">Git workflow</a></li><li><a class="toctext" href="../release/">Creating a new release</a></li><li class="current"><a class="toctext" href>Coding guidelines</a><ul class="internal"><li><a class="toctext" href="#Source-code-guidelines-1">Source-code guidelines</a></li><li><a class="toctext" href="#Documentation-guidelines-1">Documentation guidelines</a></li><li><a class="toctext" href="#Other-style-guides-1">Other style guides</a></li></ul></li><li><a class="toctext" href="../about/">About</a></li></ul></nav><article id="docs"><header><nav><ul><li><a href>Coding guidelines</a></li></ul><a class="edit-page" href="https://github.com/JuliaReach/JuliaReachDevDocs/blob/master/docs/src/guidelines.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Coding guidelines</span><a class="fa fa-bars" href="#"></a></div></header><ul><li><a href="#Coding-guidelines-1">Coding guidelines</a></li><ul><li><a href="#Source-code-guidelines-1">Source-code guidelines</a></li><li><a href="#Documentation-guidelines-1">Documentation guidelines</a></li><ul><li><a href="#Generating-the-documentation-1">Generating the documentation</a></li><li><a href="#Mathematical-notation-1">Mathematical notation</a></li><li><a href="#Writing-docstrings-1">Writing docstrings</a></li><li><a href="#Writing-doctests-1">Writing doctests</a></li><li><a href="#Extending-the-online-documentation-1">Extending the online documentation</a></li><li><a href="#Adding-plot-recipe-docstrings-1">Adding plot recipe docstrings</a></li></ul><li><a href="#Other-style-guides-1">Other style guides</a></li></ul></ul><h1><a class="nav-anchor" id="Coding-guidelines-1" href="#Coding-guidelines-1">Coding guidelines</a></h1><h2><a class="nav-anchor" id="Source-code-guidelines-1" href="#Source-code-guidelines-1">Source-code guidelines</a></h2><ul><li><p>Use 4 space characters for indentation.</p></li><li><p>In error messages, make the first word lowercase and do not add a period in the end.</p></li><li><p>Use empty space in assignments:</p><ul><li><code>n=length(q)</code> :thumbsdown:</li><li><code>n = length(q)</code> :thumbsup:</li></ul></li><li><p>The previous convention has an exception: using <code>=</code> in keyword arguments:</p><ul><li><code>convex_hull(p, algorithm = &quot;monotone_chain&quot;)</code> :thumbsdown:</li><li><code>convex_hull(p, algorithm=&quot;monotone_chain&quot;)</code> :thumbsup:</li></ul></li><li><p>Use empty space after commas:</p><ul><li><code>evaluate(p,D)</code> :thumbsdown:</li><li><code>evaluate(p, D)</code> :thumbsup:</li></ul></li><li><p>Try to stay within 80 characters both for code and documentation. For type and function signatures this usually requires line breaks if there are many arguments or they have long names. In this case we write each argument in a new line if it looks better. If the offending line is a string, you can divide it into smaller chunks with <code>*</code>, as in:</p></li></ul><pre><code class="language-julia">    @assert dim(P) == size(M, 2) &quot;a linear map of size $(size(M)) cannot be &quot; *
+                                 &quot;applied to a set of dimension $(dim(P))&quot;</code></pre><div class="admonition note"><div class="admonition-title">Note</div><div class="admonition-text"><p>The 80 characters rule should not be enforced in all cases, but is rather a soft guideline.</p></div></div><ul><li><p>Use the full <code>function f() ... end</code> instead of <code>f() = ...</code>. However, the short form is preferable in constructors and aliases such as <code>×(X::LazySet, Y::LazySet) = CartesianProduct(X, Y)</code>.</p></li><li><p>Use the following conventions for type parameters:</p><ul><li><code>N</code> for numeric types</li><li><code>VN</code> for vectors of numeric type <code>N</code></li><li><code>MN</code> for matrices of numeric type <code>N</code></li><li><code>S</code> for set types</li></ul></li><li><p>To indicate helper functions that are not part of the API, use a leading underscore for the function name, as in <code>_myfun</code>.</p></li><li><p>Read <a href="https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1">Julia&#39;s Style Guide</a>.</p></li></ul><h2><a class="nav-anchor" id="Documentation-guidelines-1" href="#Documentation-guidelines-1">Documentation guidelines</a></h2><h3><a class="nav-anchor" id="Generating-the-documentation-1" href="#Generating-the-documentation-1">Generating the documentation</a></h3><p>To generate the HTML documentation we rely on the <code>docs/make.jl</code> script that is interpreted using Julia&#39;s documentation generator package <a href="https://juliadocs.github.io/Documenter.jl/stable/">Documenter.jl</a>. You can build the documentation locally and verify the changes with the following command:</p><pre><code class="language-none">$ julia --color=yes docs/make.jl</code></pre><p>This will deploy the docs in <code>docs/build</code> with <code>index.html</code> being the start page.</p><p>Observe that the <code>docs/build</code> folder is and should not be included in the <code>master</code> branch: in fact, the build system automatically pushes this folder to the <code>gh-pages</code> branch after each commit. This means that each time that a commit is merged into the <code>master</code> branch in Github, the updated documentation will be available as soon as the continuous integration finishes (this usually takes a couple of minutes).</p><h3><a class="nav-anchor" id="Mathematical-notation-1" href="#Mathematical-notation-1">Mathematical notation</a></h3><p>Mathematical formulas are written in LaTeX inside double backticks. If possible you should use Unicode; otherwise remember that the backslash character should be written twice.</p><pre><code class="language-none">``\delta[TAB]A``</code></pre><p>Notice that the string is inside double back-ticks, and that we use the TAB key to transform into Unicode. In those cases where there is no Unicode character, you can use <em>two</em> backslash characters.</p><pre><code class="language-none">``\\mathcal{X}_0``</code></pre><p>Finally, Documenter can also parse usual LaTeX dollar sign notation for the Markdown files. In that case, only one backslash is needed. For more examples consult <a href="https://juliadocs.github.io/Documenter.jl/stable/">Documenter.jl</a> or check the various examples in our project&#39;s source code.</p><h3><a class="nav-anchor" id="Writing-docstrings-1" href="#Writing-docstrings-1">Writing docstrings</a></h3><p>In this section we give the guidelines for writing docstrings of functions and types. We give two concrete examples. You can find more examples by searching in the source files.</p><h4><a class="nav-anchor" id="Documenting-functions-1" href="#Documenting-functions-1">Documenting functions</a></h4><p>The docstring of a function should consist of following parts, in the given order:</p><table><tr><th style="text-align: right">Part</th><th style="text-align: right">Category</th><th style="text-align: right">Description</th></tr><tr><td style="text-align: right">Signature</td><td style="text-align: right">Mandatory</td><td style="text-align: right">List the function&#39;s name and arguments (include the argument types and the return type, i.e., just copy the signature from the source code; mark optional arguments in brackets)</td></tr><tr><td style="text-align: right">Brief description</td><td style="text-align: right">Mandatory</td><td style="text-align: right">One-line purpose of the function</td></tr><tr><td style="text-align: right">Input</td><td style="text-align: right">Mandatory</td><td style="text-align: right">All input arguments, optional or not, and valid keyword arguments</td></tr><tr><td style="text-align: right">Output</td><td style="text-align: right">Mandatory</td><td style="text-align: right">The return value(s) of the function together with a description; &quot;Nothing.&quot; if no value is returned.</td></tr><tr><td style="text-align: right">Notes</td><td style="text-align: right">Optional</td><td style="text-align: right">Additional details about the function</td></tr><tr><td style="text-align: right">Algorithm</td><td style="text-align: right">Optional but recommended</td><td style="text-align: right">Details on the implementation and the relation to other functions</td></tr><tr><td style="text-align: right">Examples</td><td style="text-align: right">Optional but recommended</td><td style="text-align: right">Give concrete, self-contained applications of this function</td></tr></table><p>Below we provide a concrete example:</p><pre><code class="language-julia">&quot;&quot;&quot;
+    monotone_chain!(points::Vector{VN}; sort::Bool=true
+                   )::Vector{VN} where {VN&lt;:AbstractVector{N}} where {N&lt;:Real}
+
+Compute the convex hull of points in the plane using Andrew&#39;s monotone chain
+method.
+
+### Input
+
+- `points` -- list of 2D vectors; is sorted in-place inside this function
+- `sort`   -- (optional, default: `true`) flag for sorting the vertices
+              lexicographically; sortedness is required for correctness
+
+### Output
+
+List of vectors containing the 2D coordinates of the corner points of the
+convex hull.
+
+### Notes
+
+For large sets of points, it is convenient to use static vectors to get
+maximum performance. For information on how to convert usual vectors
+into static vectors, see the type `SVector` provided by the
+[StaticArrays](http://juliaarrays.github.io/StaticArrays.jl/stable/)
+package.
+
+### Algorithm
+
+This function implements Andrew&#39;s monotone chain convex hull algorithm to
+construct the convex hull of a set of ``n`` points in the plane in
+``O(n \\log n)`` time.
+For further details see
+[Monotone chain](https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain)
+&quot;&quot;&quot;
+function monotone_chain!(points::Vector{VN}; sort::Bool=true
+                        )::Vector{VN} where {VN&lt;:AbstractVector{N}} where {N&lt;:Real}
+    ...
+end</code></pre><p>The following example has an optional argument, and it is surrounded with square brackets in the docstring by convention.</p><pre><code class="language-julia">&quot;&quot;&quot;
+    radius(H::Hyperrectangle, [p]::Real=Inf)::Real
+
+Return the radius of a hyperrectangle.
+
+### Input
+
+- `H` -- hyperrectangle
+- `p` -- (optional, default: `Inf`) norm
+
+### Output
+
+A real number representing the radius.
+
+### Notes
+
+The radius is defined as the radius of the enclosing ball of the given
+``p``-norm of minimal volume with the same center.
+&quot;&quot;&quot;
+function radius(H::Hyperrectangle, p::Real=Inf)::Real
+    ...
+end</code></pre><h4><a class="nav-anchor" id="Documenting-types-1" href="#Documenting-types-1">Documenting types</a></h4><p>The docstring of a type should consist of the following parts:</p><table><tr><th style="text-align: right">Part</th><th style="text-align: right">Category</th><th style="text-align: right">Description</th></tr><tr><td style="text-align: right">Signature</td><td style="text-align: right">Mandatory</td><td style="text-align: right">Describe the interface of this type (just copy the signature from the source code)</td></tr><tr><td style="text-align: right">Brief description</td><td style="text-align: right">Mandatory</td><td style="text-align: right">One-line purpose of the type</td></tr><tr><td style="text-align: right">Fields</td><td style="text-align: right">Mandatory</td><td style="text-align: right">Describe each field</td></tr><tr><td style="text-align: right">Notes</td><td style="text-align: right">Optional</td><td style="text-align: right">Additional details about the type</td></tr><tr><td style="text-align: right">Examples</td><td style="text-align: right">Optional but recommended</td><td style="text-align: right">Construction example (recommended if it has different constructors)</td></tr></table><p>Below we provide a concrete example:</p><pre><code class="language-julia">
+&quot;&quot;&quot;
+    DiscreteSystem &lt;: AbstractSystem
+
+Type that represents a system of discrete-time affine ODEs with nondeterministic
+inputs,
+
+``x_{k+1} = A x_{k} + u_{k}``
+
+where:
+
+- ``A`` is a square matrix
+- ``x(0) ∈ \\mathcal{X}_0`` and ``\\mathcal{X}_0`` is a convex set
+- ``u_{k} ∈ \\mathcal{U}_{k}``, where ``\\{\\mathcal{U}_{k}\\}_k`` is a
+  set-valued sequence defined over ``[0, δ], ..., [(N-1)δ, N δ]`` for some
+  ``δ&gt;0``
+
+### Fields
+
+- `A`  -- square matrix, possibly of type `SparseMatrixExp`
+- `X0` -- set of initial states
+- `U`  -- nondeterministic inputs
+- `δ`  -- discretization step
+
+### Examples
+
+- `DiscreteSystem(A::Union{AbstractMatrix{Float64}, SparseMatrixExp{Float64}},
+                  X0::LazySet,
+                  δ::Float64,
+                  U::NonDeterministicInput)` -- default constructor
+- `DiscreteSystem(A::Union{AbstractMatrix{Float64}, SparseMatrixExp{Float64}},
+                  X0::LazySet,
+                  δ::Float64)` -- constructor with no inputs
+- `DiscreteSystem(A::Union{AbstractMatrix{Float64}, SparseMatrixExp{Float64}},
+                  X0::LazySet,
+                  δ::Float64,
+                  U::LazySet)` -- constructor that creates a
+  `ConstantNonDeterministicInput`
+- `DiscreteSystem(A::Union{AbstractMatrix{Float64}, SparseMatrixExp{Float64}},
+                  X0::LazySet,
+                  δ::Float64,
+                  U::Vector{&lt;:LazySet})` -- constructor that creates a
+  `TimeVaryingNonDeterministicInput`
+&quot;&quot;&quot;
+struct DiscreteSystem &lt;: AbstractSystem
+    ...
+end</code></pre><p>The following is an example of an abstract type, parametric in <code>N</code>, which defines an interface and includes a doctest.</p><pre><code class="language-julia">&quot;&quot;&quot;
+    AbstractHPolygon{N&lt;:Real} &lt;: AbstractPolygon{N}
+
+Abstract type for polygons in H-representation (i.e., constraints).
+
+### Notes
+
+Every concrete `AbstractHPolygon` must have the following fields:
+- `constraints_list::Vector{LinearConstraint{N}}` -- the constraints
+
+```jldoctest
+julia&gt; subtypes(AbstractHPolygon)
+2-element Array{Union{DataType, UnionAll},1}:
+ LazySets.HPolygon   
+ LazySets.HPolygonOpt
+```
+&quot;&quot;&quot;
+abstract type AbstractHPolygon{N&lt;:Real} &lt;: AbstractPolygon{N} end</code></pre><h3><a class="nav-anchor" id="Writing-doctests-1" href="#Writing-doctests-1">Writing doctests</a></h3><p>Using <a href="https://juliadocs.github.io/Documenter.jl/stable/">Documenter.jl</a>, docstring examples can be incorporated to the doctesting framework using the <code>jldoctest</code> environment, see the <a href="https://juliadocs.github.io/Documenter.jl/stable/man/doctests/#Doctests-1">Doctests</a> section of the documentation.</p><p>Here are some additional tips:</p><ul><li>To have the required modules available in the current file, write the following in triple backticks (e.g., see <code>docs/src/lib/representations.md</code> or <a href="https://juliadocs.github.io/Documenter.jl/stable/man/doctests/#Setup-Code-1">the documentation</a>):</li></ul><pre><code class="language-none">@meta
+DocTestSetup = quote
+    using LazySets
+end</code></pre><ul><li><p>To preserve definitions between blocks of code you can use <a href="https://juliadocs.github.io/Documenter.jl/stable/man/doctests/#Preserving-definitions-between-blocks-1">labels</a>. For example, use the environment <code>jldoctest ball2_label</code>.</p></li><li><p>If you use several lines in REPL mode (<code>julia&gt; ...</code>), you will have to include empty lines between the commands. Otherwise the variables from the previous commands are not available below.</p></li><li><p>The doctests currently take a long time (~1min) because they generate some plots using <code>Plots.jl</code>. There is a line <code>doctest = true</code> in <code>make.jl</code> which you can set to <code>false</code> to allow building the documentation but skipping the doctests.</p></li></ul><h3><a class="nav-anchor" id="Extending-the-online-documentation-1" href="#Extending-the-online-documentation-1">Extending the online documentation</a></h3><p>To add a function or a type in the online documentation, put the function&#39;s signature or type in a <code>@docs</code> block on the appropriate markdown (<code>.md</code>) file of the <code>/docs/src</code> folder.</p><p>For example, let the function</p><pre><code class="language-julia">function dim(P::AbstractPolygon)::Int
+   ...
+end</code></pre><p>It is added in the documentation of the <code>AbstractPolygon</code> interface, <code>/docs/src/lib/interfaces.md</code>, in the following way:</p><pre><code class="language-julia">@docs
+...
+dim(P::AbstractPolygon)</code></pre><p>Note that output type annotations is not needed. Also the variable&#39;s name is not needed and one could equally have written <code>dim(::AbstractPolygon)</code>.</p><p>In some cases, the function to be added contains an optional input. In those cases only the required arguments are needed. For instance, let:</p><pre><code class="language-julia">    linear_map(M::AbstractMatrix, P::AbstractPolygon{N};
+               output_type::Type{&lt;:LazySet}=typeof(P)) where {N}</code></pre><p>This function can be documented in a <code>@docs</code> block as:</p><pre><code class="language-julia">linear_map(::AbstractMatrix, P::AbstractPolygon{N}) where N</code></pre><p>In cases when there is no function overload, it is sufficient to write the function&#39;s name. For example, the function with signature</p><pre><code class="language-julia">function convex_hull!(points::Vector{VN};
+                      algorithm::String=&quot;monotone_chain&quot;
+                     )::Vector{VN} where {N&lt;:Real, VN&lt;:AbstractVector{N}}
+...
+end</code></pre><p>Is documented in <code>/docs/src/lib/operations.md</code> as:</p><pre><code class="language-julia">@docs
+...
+convex_hull!</code></pre><h3><a class="nav-anchor" id="Adding-plot-recipe-docstrings-1" href="#Adding-plot-recipe-docstrings-1">Adding plot recipe docstrings</a></h3><p>A plot recipe can be added to the docs using the extension <code>RecipesBase.apply_recipe</code>. Moreover, it is important that you use pass the <code>Dict{Symbol,Any}</code>-type argument that corresponds to the plotting options; this argument is added automatically by the <code>@recipe</code> macro. Consider the example below:</p><pre><code class="language-julia">&quot;&quot;&quot;
+    plot_emptyset(∅::EmptySet, [ε]; ...)
+
+Plot an empty set.
+
+### Input
+
+- `∅` -- empty set
+- `ε` -- (optional, default: `0`) ignored, used for dispatch
+
+### Output
+
+An empty figure.
+&quot;&quot;&quot;
+@recipe function plot_emptyset(∅::EmptySet{N}, ε::N=zero(N); label=&quot;&quot;, grid=true,
+                               legend=false) where {N&lt;:Real}
+    return []
+end</code></pre><p>This example has an optional argument with default value. Inside a <code>@docs</code> block we can add the docstring as follows:</p><pre><code class="language-julia">RecipesBase.apply_recipe(::Dict{Symbol,Any}, ::EmptySet{N}, ::N=zero(N)) where {N&lt;:Real}</code></pre><h2><a class="nav-anchor" id="Other-style-guides-1" href="#Other-style-guides-1">Other style guides</a></h2><p>Below we list other Julia code style guides that we have found interesting. </p><ul><li><a href="https://github.com/jrevels/YASGuide">Yet Another Style Guide For Julia</a></li><li><a href="http://www.juliaopt.org/JuMP.jl/dev/style/#Style-guide-and-design-principles-1">JuMP.jl style guide</a></li><li><a href="https://docs.julialang.org/en/v1.2/manual/style-guide/#Style-Guide-1">Julia style guide</a></li></ul><footer><hr/><a class="previous" href="../release/"><span class="direction">Previous</span><span class="title">Creating a new release</span></a><a class="next" href="../about/"><span class="direction">Next</span><span class="title">About</span></a></footer></article></body></html>
